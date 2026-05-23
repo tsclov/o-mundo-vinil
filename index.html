@@ -59,7 +59,68 @@
       font-size:0.95rem;
       transition:0.3s;
     }
+    /* BOTÃO MOBILE */
 
+.menu-mobile{
+
+  display:none;
+
+  background:none;
+
+  border:none;
+
+  color:white;
+
+  font-size:2rem;
+
+  cursor:pointer;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .menu-mobile{
+
+    display:block;
+
+    position:absolute;
+
+    right:7%;
+  }
+
+  nav{
+
+    position:absolute;
+
+    top:100%;
+
+    right:0;
+
+    width:100%;
+
+    background:#0a0a0a;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:25px;
+
+    padding:30px 0;
+
+    display:none;
+  }
+
+  nav.active{
+    display:flex;
+  }
+
+  .logo
+    height:45px;
+   }
+
+   }
     nav a:hover{
       color:#b3ffb7;
     }
@@ -329,7 +390,9 @@
   <header>
 
     <div class="logo">O mundo vinil</div>
-
+   <button class="menu-mobile" onclick="toggleMenu()">
+   ☰
+   </button>
     <nav>
       <a href="index.html">Home</a>
       <a href="vinis.html">Vinis</a>
@@ -350,7 +413,7 @@
         sua loja de vinis :0
       </p>
 
-      <a href="#" class="btn">Comprar Agora</a>
+      <a href="vinis.html" class="btn">Comprar Agora</a>
 
     </div>
 
