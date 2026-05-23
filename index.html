@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>O mundo vinil</title>
+
+  <style>
+
+    @font-face{
+      font-family: 'Heaven';
+      src: url('./JustLikeHeaven_v2.otf') format('opentype');
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      background:#050505;
+      color:white;
+      overflow-x:hidden;
+      font-family: arial;
+    }
+
+    header{
+      width:100%;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:999;
+      padding:24px 7%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      backdrop-filter:blur(14px);
+      background:rgba(0,0,0,0.45);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo{
+      font-family:'Heaven';
+      font-size:2rem;
+      letter-spacing:3px;
+      color:#b3b8ff;
+    }
+
+    nav{
+      display:flex;
+      gap:35px;
+    }
+
+    nav a{
+      text-decoration:none;
+      color:#ffffff;
+      font-size:0.95rem;
+      transition:0.3s;
+    }
+
+    nav a:hover{
+      color:#b3ffb7;
+    }
+
+    /* HERO */
+
+    .hero{
+      width:100%;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:140px 8%;
+      background:
+      linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.85)),
+      url('https://i.pinimg.com/originals/b5/39/39/b539391edeaed377d62a3be4fc879c8b.gif');
+      background-size:cover;
+      background-position:center;
+    }
+
+    .hero-content{
+      max-width:900px;
+    }
+
+    .hero h1{
+      font-family:'Heaven';
+      font-size:6rem;
+      line-height:0.95;
+      margin-bottom:30px;
+      color:#b3b8ff;
+      
+    }
+
+    .hero p{
+      color:#d0d0d0;
+      font-size:1.1rem;
+      line-height:1.8;
+      margin-bottom:35px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:16px 40px;
+      border-radius:50px;
+      background:#5560f7;
+      color:white;
+      text-decoration:none;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      transform:scale(1.05);
+      background:#5560f7;
+    }
+
+    /* SECTION */
+
+    section{
+      padding:100px 7%;
+    }
+
+    .section-title{
+      font-family:'Heaven';
+      font-size:3rem;
+      margin-bottom:50px;
+      color:#ffffff;
+      text-align:center;
+    }
+
+    /* CONTAINER */
+
+.carousel-container{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+}
+
+/* CARROSSEL */
+
+.carousel{
+  display:flex;
+  gap:25px;
+  overflow-x:auto;
+  scroll-behavior:smooth;
+  padding-bottom:20px;
+}
+
+.carousel::-webkit-scrollbar{
+  display:none;
+}
+/* LINK DO CARD */
+
+.card-link{
+  text-decoration:none;
+  color:inherit;
+}
+
+.card-link *{
+  color:white;
+}
+
+/* BOTÕES */
+
+.carousel-buttons{
+  position:relative;
+}
+
+/* BOTÕES */
+
+.carousel-buttons{
+  position:relative;
+}
+
+.arrow{
+  position:absolute;
+  top:45%;
+  transform:translateY(-50%);
+  width:55px;
+  height:55px;
+  border:none;
+  border-radius:50%;
+  background:#5558f7e6;
+  color:white;
+  font-size:1.5rem;
+  cursor:pointer;
+  z-index:10;
+  transition:0.3s;
+  backdrop-filter:blur(10px);
+}
+
+.arrow:hover{
+  background:#85fc60;
+  transform:translateY(-50%) scale(1.08);
+}
+
+.left{
+  left:-20px;
+}
+
+.right{
+  right:-20px;
+}
+
+    .vinyl-card{
+   min-width:280px;
+   width:280px;
+   height:500px;
+
+   background:#111;
+   border-radius:24px;
+   overflow:hidden;
+
+   border:1px solid rgba(255,255,255,0.08);
+
+   transition:0.4s;
+   flex-shrink:0;
+
+   display:flex;
+   flex-direction:column;
+   }
+
+    .vinyl-card:hover{
+      transform:translateY(-10px);
+      border-color:#8055f7;
+      box-shadow:0 0 30px #b3b8ff;
+    }
+
+    .vinyl-card img{
+      width:100%;
+      height:280px;
+      object-fit:cover;
+    }
+
+    .card-content{
+   padding:22px;
+
+   display:flex;
+   flex-direction:column;
+
+   flex:1;
+    }
+
+    .album{
+      font-size:1.2rem;
+      font-weight:700;
+      margin-bottom:8px;
+    }
+
+    .artist{
+      color:#b0b0b0;
+      margin-bottom:18px;
+     }
+
+    .price{
+      color:#b3b8ff;
+      font-size:1.2rem;
+      font-weight:bold;
+     }
+
+    /* BANNER */
+
+    .banner{
+      margin-top:100px;
+      background:
+      linear-gradient(135deg,#1c1e87,#111827);
+      border-radius:35px;
+      padding:80px 50px;
+      text-align:center;
+    }
+
+    .banner h2{
+      font-family:'Heaven';
+      font-size:4rem;
+      margin-bottom:20px;
+    }
+
+    .banner p{
+      color:#d5d5d5;
+      max-width:700px;
+      margin:auto;
+      line-height:1.8;
+      margin-bottom:35px;
+    }
+
+    /* FOOTER */
+
+    footer{
+      padding:40px 7%;
+      text-align:center;
+      border-top:1px solid rgba(255,255,255,0.08);
+      color:#777;
+    }
+
+    /* RESPONSIVO */
+
+    @media(max-width:768px){
+
+      nav{
+        display:none;
+      }
+
+      .hero h1{
+        font-size:3.5rem;
+      }
+
+      .section-title{
+        font-size:2.2rem;
+      }
+
+      .banner h2{
+        font-size:2.5rem;
+      }
+
+      .banner{
+        padding:50px 25px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <header>
+
+    <div class="logo">O mundo vinil</div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="vinis.html">Vinis</a>
+      <a href="#">Coleções</a>
+      <a href="#">Novidades</a>
+      <a href="#">Contato</a>
+    </nav>
+
+  </header>
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>Mundo<br>Vinil</h1>
+
+      <p>
+        sua loja de vinis :0
+      </p>
+
+      <a href="#" class="btn">Comprar Agora</a>
+
+    </div>
+
+  </section>
+
+  <section>
+
+    <h2 class="section-title">Vinis em destaque</h2>
+   
+     <div class="carousel-container">
+
+     <div class="carousel-buttons">
+     <button class="arrow left" onclick="scrollCarousel(-1)">❮</button>
+     <button class="arrow right" onclick="scrollCarousel(1)">❯</button>
+      <div class="carousel" id="vinylCarousel">
+
+        <a class="card-link" href="https://store.oliviarodrigo.com/collections/vinyl/products/you-seem-pretty-sad-for-a-girl-so-in-love-exclusive-sticky-sweet-hot-pink-vinyl">
+        <div class="vinyl-card">
+          <img src="https://store.oliviarodrigo.com/cdn/shop/files/02_girlsoinlove-exclusive_stickysweet_hotpinkvinyl.png?v=1775142228&width=1400">
+          <div class="card-content">
+            <div class="album">you seem pretty sad for a girl so in love</div>
+            <div class="artist">Olivia Rodrigo</div>
+            <div class="price">R$ 269</div>
+          </div>
+        </div>
+        </a>
+       <a class="card-link" href="https://store.oliviarodrigo.com/collections/vinyl/products/you-seem-pretty-sad-for-a-girl-so-in-love-exclusive-carve-our-names-picture-disc-vinyl">
+        <div class="vinyl-card">
+          <img src="https://store.oliviarodrigo.com/cdn/shop/files/1ST_0000s_0016_YLPSFGSIL-Picture-Disc---Disc-With-Sleeve.png?v=1779397650&width=1200">
+          <div class="card-content">
+            <div class="album">you seem pretty sad for a girl so in love <br> picture disc edition</div>
+            <div class="artist">Olivia Rodrigo</div>
+            <div class="price">R$ 189</div>
+            <div class="link"></div>
+          </div>
+        </div>
+        </a>
+
+        <div class="vinyl-card">
+          <img src="https://store.oliviarodrigo.com/cdn/shop/files/01_girlsoinlove-exclusive180-gramvinyl_signed.png?v=1775142201&width=1200">
+          <div class="card-content">
+            <div class="album">you seem pretty sad for a girl so in love<br>-signed</div>
+            <div class="artist">Olivia Rodrigo</div>
+            <div class="price">R$ 299</div>
+          </div>
+        </div>
+
+        <div class="vinyl-card">
+          <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=987&auto=format&fit=crop">
+          <div class="card-content">
+            <div class="album">Lost Frequencies</div>
+            <div class="artist">The Echoes</div>
+            <div class="price">R$ 228</div>
+          </div>
+        </div>
+
+        
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="banner">
+
+      <h2>Creator's Pick</h2>
+
+      <p>
+        Veja aqui as escolhas dos melhores discos pelos criadores do site.
+      </p>
+
+      <a href="#" class="btn">Ver coleção</a>
+
+    </div>
+
+  </section>
+
+  <footer>
+    O mundo vinil, 2026&copy;
+  </footer>
+<script>
+
+  const carousel = document.getElementById("vinylCarousel");
+
+  const scrollAmount = 320;
+
+  function scrollCarousel(direction){
+
+    const maxScrollLeft =
+      carousel.scrollWidth - carousel.clientWidth;
+
+    // DIREITA
+    if(direction === 1){
+
+      // se chegou no final → volta pro começo
+      if(carousel.scrollLeft >= maxScrollLeft -4){
+
+        carousel.scrollTo({
+          left: 0,
+          behavior: "smooth"
+        });
+
+      } else {
+
+        carousel.scrollBy({
+          left: scrollAmount,
+          behavior: "smooth"
+        });
+
+      }
+
+    }
+
+    // Direita
+    else{
+
+      // se estiver no começo → vai pro final
+      if(carousel.scrollLeft <= 4){
+
+        carousel.scrollTo({
+          left: maxScrollLeft,
+          behavior: "smooth"
+        });
+
+      } else {
+
+        carousel.scrollBy({
+          left: -scrollAmount,
+          behavior: "smooth"
+        });
+
+      }
+
+    }
+
+  }
+
+</script>
+</body>
+</html>
