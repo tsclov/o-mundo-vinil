@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Explorar Vinis</title>
-
+ <link rel="icon" href="logo.png.png" type="image/x-icon">
   <style>
 
     @font-face{
@@ -62,7 +62,66 @@
     nav a:hover{
       color:#b3ffb7;
     }
+    /* BOTÃO MOBILE */
 
+.menu-mobile{
+
+  display:none;
+
+  background:none;
+
+  border:none;
+
+  color:white;
+
+  font-size:2rem;
+
+  cursor:pointer;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .menu-mobile{
+
+    display:block;
+
+    position:absolute;
+
+    right:7%;
+  }
+
+  nav{
+
+    position:absolute;
+
+    top:100%;
+
+    right:0;
+
+    width:100%;
+
+    background:#0a0a0a;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:25px;
+
+    padding:30px 0;
+
+    display:none;
+  }
+
+  nav.active{
+    display:flex;
+  }
+
+  
+
+   }
     /* STORE */
 
     .vinyl-store{
@@ -324,7 +383,9 @@
  </div>
 
  
-
+ <button class="menu-mobile" onclick="toggleMenu()">
+ ☰
+  </button>
     <nav>
       <a href="index.html">Home</a>
       <a href="vinis.html">Vinis</a>
@@ -529,6 +590,14 @@
   });
 
 });
+  function toggleMenu(){
+
+  const nav =
+  document.getElementById("navbar");
+
+  nav.classList.toggle("active");
+
+}
 
 </script>
 </body>
