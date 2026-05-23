@@ -539,6 +539,40 @@
 
   background:#6f79ff;
 }
+  /* TOPO DO CARRINHO */
+
+.cart-header{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  margin-bottom:30px;
+}
+
+.close-cart{
+
+  background:none;
+
+  border:none;
+
+  color:white;
+
+  font-size:1.5rem;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.close-cart:hover{
+
+  color:#b3b8ff;
+
+  transform:scale(1.1);
+}
     @media(max-width:768px){
 
       .menu-mobile{
@@ -800,8 +834,15 @@
 
   <div class="cart-sidebar" id="cartSidebar">
 
-    <h2>Seu Carrinho</h2>
+   <div class="cart-header">
 
+   <h2>Seu Carrinho</h2>
+
+   <button class="close-cart" onclick="toggleCart()">
+    ✕
+   </button>
+
+</div>
     <div id="cart-items"></div>
 
     <div class="cart-total">
