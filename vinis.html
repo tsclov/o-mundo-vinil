@@ -205,7 +205,7 @@
 
       cursor:pointer;
 
-      trantions:0.3s;
+      transition:0.3s;
     }
     .checkout-btn{
 
@@ -454,7 +454,91 @@
     }
 
     /* MOBILE */
+   .popup{
 
+   position:fixed;
+
+   top:0;
+   left:0;
+
+   width:100%;
+   height:100vh;
+
+   background:rgba(0,0,0,0.75);
+
+   display:flex;
+
+   justify-content:center;
+   align-items:center;
+
+   opacity:0;
+
+   pointer-events:none;
+
+   transition:0.3s;
+
+   z-index:5000;
+   }
+
+  .popup.active{
+
+   opacity:1;
+
+    pointer-events:auto;
+  }
+
+  .popup-content{
+
+   background:#111;
+
+   padding:40px;
+
+   border-radius:24px;
+
+   text-align:center;
+
+   width:90%;
+   max-width:400px;
+
+   border:
+   1px solid rgba(255,255,255,0.08);
+  }
+
+ .popup-content h2{
+   
+   color:#b3b8ff;
+
+   margin-bottom:15px;
+  }
+
+ .popup-content p{
+
+  color:#d0d0d0;
+
+  margin-bottom:25px;
+}
+
+ .popup-content button{
+
+   background:#5560f7;
+
+   color:white;
+
+   border:none;
+
+  padding:14px 25px;
+
+  border-radius:14px;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.popup-content button:hover{
+
+  background:#6f79ff;
+}
     @media(max-width:768px){
 
       .menu-mobile{
@@ -735,7 +819,25 @@
 
    </div>
   </div>
+  <!-- POPUP -->
 
+ <div class="popup" id="popup">
+
+  <div class="popup-content">
+
+    <h2>Compra realizada 💜</h2>
+
+    <p>
+      Obrigado por comprar conosco!
+    </p>
+
+    <button onclick="closePopup()">
+      Fechar
+    </button>
+
+  </div>
+
+</div>
   <script>
 
     /* MENU MOBILE */
@@ -853,23 +955,35 @@
      updateCart();
 
     }
-    function checkout(){
+   function checkout(){
 
-     if(cart.length === 0){
+  if(cart.length === 0){
 
-     alert("Seu carrinho está vazio!");
+    alert("Seu carrinho está vazio!");
 
-      return;
+    return;
 
-    }
+  }
 
-    alert("Obrigado por comprar conosco 💜");
+  const popup =
+  document.getElementById("popup");
 
-     cart = [];
+  popup.classList.add("active");
 
-     updateCart();
+  cart = [];
 
-    }
+  updateCart();
+
+}
+
+function closePopup(){
+
+  const popup =
+  document.getElementById("popup");
+
+  popup.classList.remove("active");
+
+}
   </script>
 
 </body>
