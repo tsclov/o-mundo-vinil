@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Explorar Vinis</title>
- <link rel="icon" href="logo.png.png" type="image/x-icon">
+
+  <link rel="icon" href="logo.png.png" type="image/x-icon">
+
   <style>
 
     @font-face{
@@ -24,6 +26,7 @@
       background:#050505;
       color:white;
       font-family:Arial, Helvetica, sans-serif;
+      overflow-x:hidden;
     }
 
     a{
@@ -32,104 +35,229 @@
     }
 
     /* HEADER */
- header{
-    width:100%;
+
+    header{
+      width:100%;
       position:fixed;
       top:0;
       left:0;
       z-index:999;
+
       padding:24px 7%;
+
       display:flex;
       justify-content:space-between;
       align-items:center;
+
       backdrop-filter:blur(14px);
+
       background:rgba(0,0,0,0.45);
-      border-bottom:1px solid rgba(255,255,255,0.08);
-     }
+
+      border-bottom:
+      1px solid rgba(255,255,255,0.08);
+    }
 
     .logo{
-       font-family:'Heaven';
+      font-family:'Heaven';
       font-size:2rem;
       letter-spacing:3px;
       color:#b3b8ff;
-     }
+    }
 
     nav{
       display:flex;
       gap:35px;
-     }
+    }
+
+    nav a{
+      color:white;
+      transition:0.3s;
+    }
 
     nav a:hover{
       color:#b3ffb7;
     }
-    /* BOTÃO MOBILE */
 
-.menu-mobile{
+    /* MENU MOBILE */
 
-  display:none;
+    .menu-mobile{
 
-  background:none;
+      display:none;
 
-  border:none;
+      background:none;
 
-  color:white;
+      border:none;
 
-  font-size:2rem;
+      color:white;
 
-  cursor:pointer;
-}
+      font-size:2rem;
 
-/* MOBILE */
+      cursor:pointer;
+    }
 
-@media(max-width:768px){
+    /* CARRINHO */
 
-  .menu-mobile{
+    .cart-icon{
 
-    display:block;
+      font-size:1.5rem;
 
-    position:absolute;
+      cursor:pointer;
 
-    right:7%;
-  }
+      position:relative;
+    }
 
-  nav{
+    #cart-count{
 
-    position:absolute;
+      background:#85fc60;
 
-    top:100%;
+      color:black;
 
-    right:0;
+      font-size:0.8rem;
 
-    width:100%;
+      padding:3px 8px;
 
-    background:#0a0a0a;
+      border-radius:50px;
 
-    flex-direction:column;
+      position:absolute;
 
-    align-items:center;
+      top:-10px;
+      right:-15px;
+    }
 
-    gap:25px;
+    /* SIDEBAR */
 
-    padding:30px 0;
+    .cart-sidebar{
 
-    display:none;
-  }
+      position:fixed;
 
-  nav.active{
-    display:flex;
-  }
+      top:0;
+      right:-400px;
 
+      width:350px;
+      height:100vh;
+
+      background:#111;
+
+      z-index:2000;
+
+      padding:30px;
+
+      transition:0.4s;
+
+      overflow-y:auto;
+
+      border-left:
+      1px solid rgba(255,255,255,0.08);
+    }
+
+    .cart-sidebar.active{
+      right:0;
+    }
+
+    .cart-sidebar h2{
+
+      margin-bottom:30px;
+
+      color:#b3b8ff;
+    }
+
+    .cart-item{
+
+      margin-bottom:20px;
+
+      padding-bottom:15px;
+
+      border-bottom:
+      1px solid rgba(255,255,255,0.08);
+    }
+
+    .cart-total{
+
+      margin-top:30px;
+
+      font-size:1.3rem;
+
+      font-weight:bold;
+
+      color:#85fc60;
+    }
+    /* BOTÕES DO CARRINHO */
+
+    .cart-buttons{
+
+     display:flex;
+
+     flex-direction:column;
+
+     gap:15px;
+
+     margin-top:30px;
+    }
+    
+    .clear-cart-btn{
+      border:none; 
+
+      padding:15px;
+
+      border-radius:14px; 
+
+      font-size:1rem;
+
+      cursor:pointer;
+
+      trantions:0.3s;
+    }
+    .checkout-btn{
+
+      border:none;
+
+     padding:15px;
   
+     border-radius:14px;
 
-   }
+     font-size:1rem;
+
+     cursor:pointer;
+
+     transition:0.3s;
+    } 
+
+    .clear-cart-btn{
+
+     background:#5560f7;
+
+     color:white;
+
+     font-weight:bold;
+    }
+
+   .clear-cart-btn:hover{
+      background:#6f79ff;
+
+      transform:scale(1.02);
+    }
+
+    .checkout-btn{
+
+     background:#5560f7;
+
+     color:white;
+
+     font-weight:bold;
+    }
+
+.checkout-btn:hover{
+
+  background:#6f79ff;
+
+  transform:scale(1.02);
+}
     /* STORE */
 
     .vinyl-store{
       width:100%;
       padding:140px 7% 100px;
     }
-
-    /* TOP BAR */
 
     .top-bar{
       display:flex;
@@ -146,14 +274,11 @@
     .store-title{
       font-family:'Heaven';
       font-size:3rem;
-
-      color:white;
     }
 
     .store-actions{
       display:flex;
       gap:15px;
-
       flex-wrap:wrap;
     }
 
@@ -182,26 +307,21 @@
 
     .vinyl-grid{
 
-     display:grid;
+      display:grid;
 
-     grid-template-columns:
-     repeat(auto-fit, 280px);
+      grid-template-columns:
+      repeat(auto-fit, 280px);
 
-     justify-content:start;
- 
-     gap:30px;
-     }
+      justify-content:start;
 
-    /* LINK */
-
-    .card-link{
-      text-decoration:none;
-      color:white;
-
-      display:block;
+      gap:30px;
     }
 
     /* CARD */
+
+    .card-link{
+      display:block;
+    }
 
     .vinyl-card{
 
@@ -218,7 +338,7 @@
 
       position:relative;
 
-      height:100%;
+      min-height:520px;
 
       display:flex;
       flex-direction:column;
@@ -231,10 +351,8 @@
       border-color:#5560f7;
 
       box-shadow:
-      0 0 30px rgba(37, 35, 145, 0.15);
+      0 0 30px rgba(37,35,145,0.15);
     }
-
-    /* BADGE */
 
     .badge{
 
@@ -259,8 +377,6 @@
       background:#4533ea;
     }
 
-    /* IMAGE */
-
     .vinyl-card img{
 
       width:100%;
@@ -268,8 +384,6 @@
 
       object-fit:cover;
     }
-
-    /* CONTENT */
 
     .card-content{
 
@@ -299,8 +413,6 @@
       margin-bottom:25px;
     }
 
-    /* PRICE */
-
     .price-area{
 
       margin-top:auto;
@@ -308,6 +420,8 @@
       display:flex;
       justify-content:space-between;
       align-items:center;
+
+      gap:10px;
     }
 
     .price{
@@ -317,8 +431,6 @@
       font-size:1.3rem;
       font-weight:bold;
     }
-
-    /* BUTTON */
 
     .buy-btn{
 
@@ -341,20 +453,42 @@
       background:#a855f7;
     }
 
-    /* RESPONSIVO */
+    /* MOBILE */
 
     @media(max-width:768px){
 
+      .menu-mobile{
+        display:block;
+      }
+
       nav{
+
+        position:absolute;
+
+        top:100%;
+        right:0;
+
+        width:100%;
+
+        background:#0a0a0a;
+
+        flex-direction:column;
+
+        align-items:center;
+
+        gap:25px;
+
+        padding:30px 0;
+
         display:none;
+      }
+
+      nav.active{
+        display:flex;
       }
 
       .store-title{
         font-size:2.2rem;
-      }
-
-      .top-bar{
-        align-items:flex-start;
       }
 
       .store-actions{
@@ -363,6 +497,10 @@
       }
 
       .store-actions input{
+        width:100%;
+      }
+
+      .cart-sidebar{
         width:100%;
       }
 
@@ -378,263 +516,361 @@
 
   <header>
 
- <div class="logo">
- O mundo vinil
- </div>
+    <div class="logo">
+      O mundo vinil
+    </div>
 
- 
- <button class="menu-mobile" onclick="toggleMenu()">
- ☰
-  </button>
+    <button class="menu-mobile" onclick="toggleMenu()">
+      ☰
+    </button>
+
     <nav id="navbar">
       <a href="index.html">Home</a>
       <a href="vinis.html">Vinis</a>
       <a href="#">Coleções</a>
       <a href="#">Novidades</a>
-      <a href="#">Contato</a>
     </nav>
+
+    <div class="cart-icon" onclick="toggleCart()">
+      🛒 <span id="cart-count">0</span>
+    </div>
 
   </header>
 
   <!-- STORE -->
 
- <section class="vinyl-store">
+  <section class="vinyl-store">
 
-  <div class="top-bar">
+    <div class="top-bar">
 
-    <h2 class="store-title">
-      Explorar Vinis
-    </h2>
+      <h2 class="store-title">
+        Explorar Vinis
+      </h2>
 
-    <div class="store-actions">
+      <div class="store-actions">
 
-      <input 
-     type="text"
-     id="searchInput"
-     placeholder="Buscar artista ou álbum...">
+        <input
+        type="text"
+        id="searchInput"
+        placeholder="Buscar artista ou álbum...">
 
-      <select>
-        <option>Todos</option>
-        <option>Pop</option>
-        <option>Rock</option>
-        <option>Indie</option>
-        <option>K-pop</option>
-      </select>
+        <select>
+          <option>Todos</option>
+          <option>Pop</option>
+          <option>Rock</option>
+          <option>Indie</option>
+          <option>K-pop</option>
+        </select>
+
+      </div>
 
     </div>
 
+    <!-- GRID -->
+
+    <div class="vinyl-grid">
+
+      <!-- CARD 1 -->
+
+      <a class="card-link"
+      data-name="olivia rodrigo hot pink vinyl"
+      href="#">
+
+        <div class="vinyl-card">
+
+          <div class="badge">
+            novo
+          </div>
+
+          <img src="https://store.oliviarodrigo.com/cdn/shop/files/02_girlsoinlove-exclusive_stickysweet_hotpinkvinyl.png?v=1775142228&width=1400">
+
+          <div class="card-content">
+
+            <div class="album">
+              you seem pretty sad for a girl so in love
+            </div>
+
+            <div class="artist">
+              Olivia Rodrigo
+            </div>
+
+            <div class="price-area">
+
+              <div class="price">
+                R$269
+              </div>
+
+              <button
+              class="buy-btn"
+              onclick="event.preventDefault(); addToCart('Hot Pink Vinyl', 269)">
+
+                Adicionar
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </a>
+
+      <!-- CARD 2 -->
+
+      <a class="card-link"
+      data-name="olivia rodrigo you seem pretty sad for a girl so in love picture disc edition"
+      href="#">
+
+        <div class="vinyl-card">
+
+          <div class="badge purple">
+            exclusivo
+          </div>
+
+          <img src="https://store.oliviarodrigo.com/cdn/shop/files/1ST_0000s_0016_YLPSFGSIL-Picture-Disc---Disc-With-Sleeve.png?v=1779397650&width=1200">
+
+          <div class="card-content">
+
+            <div class="album">
+              you seem pretty sad for a girl so in love <br>- picture disc edition
+            </div>
+
+            <div class="artist">
+              Olivia Rodrigo
+            </div>
+
+            <div class="price-area">
+
+              <div class="price">
+                R$179
+              </div>
+
+              <button
+              class="buy-btn"
+              onclick="event.preventDefault(); addToCart('Picture Disc Edition', 179)">
+
+                Adicionar
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </a>
+
+      <!-- CARD 3 -->
+
+      <a class="card-link"
+      data-name="olivia rodrigo signed vinyl"
+      href="#">
+
+        <div class="vinyl-card">
+
+          <div class="badge purple">
+            autografado
+          </div>
+
+          <img src="https://store.oliviarodrigo.com/cdn/shop/files/01_girlsoinlove-exclusive180-gramvinyl_signed.png?v=1775142201&width=1200">
+
+          <div class="card-content">
+
+            <div class="album">
+              you seem pretty sad for a girl so in love <br> - signed edition
+            </div>
+
+            <div class="artist">
+              Olivia Rodrigo
+            </div>
+
+            <div class="price-area">
+
+              <div class="price">
+                R$299
+              </div>
+
+              <button
+              class="buy-btn"
+              onclick="event.preventDefault(); addToCart('Signed Edition', 299)">
+
+                Adicionar
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- SIDEBAR -->
+
+  <div class="cart-sidebar" id="cartSidebar">
+
+    <h2>Seu Carrinho</h2>
+
+    <div id="cart-items"></div>
+
+    <div class="cart-total">
+      Total: R$ <span id="cart-total">0</span>
+    </div>
+   <div class="cart-buttons">
+
+   <button class="clear-cart-btn" onclick="clearCart()">
+    Esvaziar Carrinho
+   </button>
+
+   <button class="checkout-btn" onclick="checkout()">
+    Pagar
+   </button>
+
+   </div>
   </div>
 
-  <!-- GRID -->
+  <script>
 
-  <div class="vinyl-grid">
+    /* MENU MOBILE */
 
-    <!-- CARD -->
+    function toggleMenu(){
 
-    <a class="card-link"
-    data-name="olivia rodrigo you seem pretty sad for a girl so in love hot pink vinyl"
-    href="https://store.oliviarodrigo.com/collections/vinyl/products/you-seem-pretty-sad-for-a-girl-so-in-love-exclusive-sticky-sweet-hot-pink-vinyl">
+      const nav =
+      document.getElementById("navbar");
 
-      <div class="vinyl-card">
-
-        <div class="badge">
-          Novo
-        </div>
-
-        <img src="https://store.oliviarodrigo.com/cdn/shop/files/02_girlsoinlove-exclusive_stickysweet_hotpinkvinyl.png?v=1775142228&width=1400">
-
-        <div class="card-content">
-
-          <div class="album">
-            you seem pretty sad for a girl so in love
-          </div>
-
-          <div class="artist">
-            Olivia Rodrigo
-          </div>
-
-          <div class="price-area">
-
-            <div class="price">
-              R$269
-            </div>
-
-            <button class="buy-btn">
-              Comprar
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </a>
-
-    <!-- CARD -->
-
-    <a class="card-link"
-    data-name="olivia rodrigo you seem prettu sad for a girl so in love picture disc edition"
-    href="https://store.oliviarodrigo.com/collections/vinyl/products/you-seem-pretty-sad-for-a-girl-so-in-love-exclusive-carve-our-names-picture-disc-vinyl">
-
-      <div class="vinyl-card">
-
-        <div class="badge purple">
-          Exclusive
-        </div>
-
-        <img src="https://store.oliviarodrigo.com/cdn/shop/files/1ST_0000s_0016_YLPSFGSIL-Picture-Disc---Disc-With-Sleeve.png?v=1779397650&width=1200">
-
-        <div class="card-content">
-
-          <div class="album">
-            you seem pretty sad for a girl so in love- picture disc edition
-          </div>
-
-          <div class="artist">
-            Olivia Rodrigo
-          </div>
-
-          <div class="price-area">
-
-            <div class="price">
-              R$189
-            </div>
-
-            <button class="buy-btn">
-              Comprar
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </a>
-
-    <!-- CARD -->
-
-    <a class="card-link" data-name="olivia rodrigo you seem pretty sad for a girl so in love signed" href="#">
-
-      <div class="vinyl-card">
-        <div class="badge purple">
-          signed
-        </div>
-
-        <img src="https://store.oliviarodrigo.com/cdn/shop/files/01_girlsoinlove-exclusive180-gramvinyl_signed.png?v=1775142201&width=1200">
-
-        <div class="card-content">
-
-          <div class="album">
-            you seem pretty sad for a girl so in love - signed
-          </div>
-
-          <div class="artist">
-            Olivia Rodrigo
-          </div>
-
-          <div class="price-area">
-
-            <div class="price">
-              R$299
-            </div>
-
-            <button class="buy-btn">
-              Comprar
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </a>
-    <a class="card-link"
-     data-name="taylor swift the tortured poets deparment TTPD ttpd THE TORTURED POETS DEPARTMENT"
-    href="https://store.taylorswift.com/products/the-tortured-poets-department-vinyl-bonus-track-the-manuscript">
-
-      <div class="vinyl-card">
-
-        <div class="badge">
-          Novo
-        </div>
-
-        <img src="https://store.taylorswift.com/cdn/shop/files/oIrR9qXXeQRc3OuzsMq1YAqie8MY8mhq-2_1.png?v=1749674281&width=550">
-
-        <div class="card-content">
-
-          <div class="album">
-           THE TORTURED POETS DEPARTMENT
-          </div>
-
-          <div class="artist">
-            Taylor Swift
-          </div>
-
-          <div class="price-area">
-
-            <div class="price">
-              R$269
-            </div>
-
-            <button class="buy-btn">
-              Comprar
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-  </div>
-
- </section>
-
- <script>
-
- const searchInput =
- document.getElementById("searchInput");
-
- const cards =
- document.querySelectorAll(".card-link");
-
- searchInput.addEventListener("input", () => {
-
-  const search =
-  searchInput.value.toLowerCase();
-
-  cards.forEach(card => {
-
-    const name =
-    (card.dataset.name || "")
-    .toLowerCase();
-
-    if(name.includes(search)){
-
-      card.style.visibility = "visible";
-      card.style.position = "relative";
-
-    } else {
-
-      card.style.visibility = "hidden";
-      card.style.position = "absolute";
+      nav.classList.toggle("active");
 
     }
 
-  });
+    /* PESQUISA */
 
-});
-  function toggleMenu(){
+    const searchInput =
+    document.getElementById("searchInput");
 
-  const nav =
-  document.getElementById("navbar");
+    const cards =
+    document.querySelectorAll(".card-link");
 
-  nav.classList.toggle("active");
+    searchInput.addEventListener("input", () => {
 
-}
+      const search =
+      searchInput.value.toLowerCase();
 
-</script>
+      cards.forEach(card => {
+
+        const name =
+        (card.dataset.name || "")
+        .toLowerCase();
+
+        if(name.includes(search)){
+
+          card.style.display = "block";
+
+        } else {
+
+          card.style.display = "none";
+
+        }
+
+      });
+
+    });
+
+    /* CARRINHO */
+
+    let cart = [];
+
+    function addToCart(name, price){
+
+      cart.push({
+        name,
+        price
+      });
+
+      updateCart();
+
+    }
+
+    function updateCart(){
+
+      const cartItems =
+      document.getElementById("cart-items");
+
+      const cartCount =
+      document.getElementById("cart-count");
+
+      const cartTotal =
+      document.getElementById("cart-total");
+
+      cartItems.innerHTML = "";
+
+      let total = 0;
+
+      cart.forEach(item => {
+
+        total += item.price;
+
+        cartItems.innerHTML += `
+
+          <div class="cart-item">
+
+            <p>${item.name}</p>
+
+            <strong>R$ ${item.price}</strong>
+
+          </div>
+
+        `;
+
+      });
+
+      cartCount.innerText =
+      cart.length;
+
+      cartTotal.innerText =
+      total;
+
+    }
+
+    function toggleCart(){
+
+      const cartSidebar =
+      document.getElementById("cartSidebar");
+
+      cartSidebar.classList.toggle("active");
+
+    }
+   function clearCart(){
+
+     cart = [];
+
+     updateCart();
+
+    }
+    function checkout(){
+
+     if(cart.length === 0){
+
+     alert("Seu carrinho está vazio!");
+
+      return;
+
+    }
+
+    alert("Obrigado por comprar conosco 💜");
+
+     cart = [];
+
+     updateCart();
+
+    }
+  </script>
+
 </body>
 </html>
