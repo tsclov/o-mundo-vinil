@@ -88,7 +88,22 @@
 
       color:#b3ffb7;
     }
+      /* MENU MOBILE */
 
+.menu-mobile{
+
+  display:none;
+
+  background:none;
+
+  border:none;
+
+  color:white;
+
+  font-size:2rem;
+
+  cursor:pointer;
+}
     /* HERO */
 
     .collections{
@@ -254,11 +269,7 @@
 
   header{
 
-    padding:18px 5%;
-
-    flex-wrap:wrap;
-
-    gap:15px;
+    padding:20px 5%;
   }
 
   .logo{
@@ -268,27 +279,53 @@
     letter-spacing:2px;
   }
 
+  /* MENU MOBILE */
+
+  .menu-mobile{
+
+    display:block;
+  }
+
   nav{
+
+    position:absolute;
+
+    top:100%;
+    right:0;
 
     width:100%;
 
-    justify-content:center;
+    background:#0a0a0a;
 
-    gap:20px;
+    flex-direction:column;
 
-    flex-wrap:wrap;
+    align-items:center;
+
+    gap:25px;
+
+    padding:30px 0;
+
+    display:none;
+
+    border-bottom:
+    1px solid rgba(255,255,255,0.08);
+  }
+
+  nav.active{
+
+    display:flex;
   }
 
   nav a{
 
-    font-size:0.95rem;
+    font-size:1rem;
   }
 
   /* SECTION */
 
   .collections{
 
-    padding:170px 5% 60px;
+    padding:150px 5% 60px;
   }
 
   .collections-title{
@@ -365,8 +402,10 @@
     <div class="logo">
       O mundo vinil
     </div>
-
-    <nav>
+      <button class="menu-mobile" onclick="toggleMenu()">
+      ☰
+     </button>
+    <nav id="navbar">
 
       <a href="index.html">
         Home
@@ -499,7 +538,16 @@
   </section>
 
   <script>
+ /* MENU MOBILE */
 
+ function toggleMenu(){
+
+  const nav =
+  document.getElementById("navbar");
+
+  nav.classList.toggle("active");
+
+ }
     const carousel =
     document.getElementById("carousel");
 
