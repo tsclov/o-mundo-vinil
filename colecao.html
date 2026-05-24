@@ -2,312 +2,349 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Coleções</title>
+<title>Coleções</title>
 
-  <style>
+<style>
 
-    @font-face{
-      font-family:'Heaven';
-      src:url('./JustLikeHeaven_v2.otf') format('opentype');
-    }
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+@font-face{
+  font-family:'Heaven';
+  src:url('./JustLikeHeaven_v2.otf') format('opentype');
+}
 
-    body{
-      background:#050505;
-      color:white;
-      font-family:Arial, Helvetica, sans-serif;
-      overflow-x:hidden;
-    }
 
-    a{
-      text-decoration:none;
-      color:white;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    /* HEADER */
+body{
+  background:#050505;
+  color:white;
+  font-family:Arial, Helvetica, sans-serif;
+  overflow-x:hidden;
+}
 
-    header{
+a{
+  text-decoration:none;
+  color:white;
+}
 
+/* =========================
+   HEADER
+========================= */
+header{
       width:100%;
-
       position:fixed;
-
       top:0;
       left:0;
-
       z-index:999;
-
       padding:24px 7%;
-
       display:flex;
-
       justify-content:space-between;
-
       align-items:center;
-
       backdrop-filter:blur(14px);
-
-      background:rgba(0,0,0,0.25);
-
-      border-bottom:
-      1px solid rgba(255,255,255,0.08);
+      background:rgba(0,0,0,0.45);
+      border-bottom:1px solid rgba(255,255,255,0.08);
     }
 
     .logo{
-
       font-family:'Heaven';
-
       font-size:2rem;
-
       letter-spacing:3px;
-
       color:#b3b8ff;
     }
 
     nav{
-
       display:flex;
-
       gap:35px;
+      align-items:center;
     }
 
     nav a{
-
+      text-decoration:none;
+      color:#ffffff;
+      font-size:0.95rem;
       transition:0.3s;
     }
 
     nav a:hover{
-
       color:#b3ffb7;
     }
 
-    /* MENU MOBILE */
+    .header-login-btn{
+      padding:14px 30px;
+      border:none;
+      border-radius:50px;
+      background:#5560f7;
+      color:white;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.3s;
+      font-size:0.95rem;
+    }
 
-    .menu-mobile{
+    .header-login-btn:hover{
+      transform:scale(1.05);
+    }
+/* =========================
+   MENU MOBILE
+========================= */
+.menu-mobile{
+  display:none;
+  background:none;
+  border:none;
+  color:white;
+  font-size:2rem;
+  cursor:pointer;
+}
 
-      display:none;
+/* =========================
+   HERO / CARROSSEL
+========================= */
+.collections{
+  width:100%;
+  height:100dvh;
+}
 
-      background:none;
+.collections-title{
+  position:absolute;
+  z-index:20;
+  left:7%;
+  bottom:120px;
+  font-family:'Heaven';
+  font-size:5rem;
+  letter-spacing:5px;
+}
+
+.carousel-wrapper{
+  position:relative;
+  width:100%;
+  height:100dvh;
+  overflow:hidden;
+}
+
+.carousel{
+  display:flex;
+  transition:0.7s ease;
+}
+
+.collection-card{
+  width:100vw;
+  height:100dvh;
+  flex-shrink:0;
+  position:relative;
+  cursor:pointer;
+}
+
+.collection-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:1s;
+}
+
+.collection-card:hover img{
+  transform:scale(1.03);
+}
+
+/* overlay */
+.overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:flex-end;
+  padding:60px;
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,0.75),
+    rgba(0,0,0,0.05)
+  );
+}
+
+/* =========================
+   SETAS
+========================= */
+.arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  border:none;
+  background:rgba(0,0,0,0.45);
+  color:white;
+  font-size:2rem;
+  cursor:pointer;
+  z-index:50;
+  transition:0.3s;
+}
+
+.arrow:hover{
+  background:#5560f7;
+}
+
+.left-arrow{ left:20px; }
+.right-arrow{ right:20px; }
+
+
+.login-popup{
+
+      position:fixed;
+      inset:0;
+
+      background:rgba(0,0,0,0.6);
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      opacity:0;
+      pointer-events:none;
+
+      transition:0.3s;
+
+      z-index:6000;
+    }
+
+    .login-popup.active{
+
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .login-box{
+
+      width:90%;
+      max-width:400px;
+
+      background:#111;
+
+      padding:30px;
+
+      border-radius:25px;
+
+      border:1px solid rgba(255,255,255,0.08);
+
+      position:relative;
+    }
+
+    .login-box h2{
+
+      margin-bottom:20px;
+
+      color:#b3b8ff;
+    }
+
+    .login-box input{
+
+      width:100%;
+
+      padding:15px;
 
       border:none;
 
+      border-radius:14px;
+
+      background:#1c1c1c;
+
       color:white;
 
-      font-size:2rem;
+      margin-bottom:20px;
+
+      outline:none;
+    }
+
+    .login-btn{
+
+      width:100%;
+
+      padding:15px;
+
+      border:none;
+
+      border-radius:14px;
+
+      background:#5560f7;
+
+      color:white;
+
+      font-weight:bold;
 
       cursor:pointer;
     }
 
-    /* HERO */
-
-    .collections{
-
-      width:100%;
-
-     height:100dvh;
-    }
-
-    .collections-title{
+    .close-login{
 
       position:absolute;
 
-      z-index:20;
+      top:12px;
+      right:12px;
 
-      left:7%;
+      width:36px;
+      height:36px;
 
-      bottom:120px;
-
-      font-family:'Heaven';
-
-      font-size:5rem;
-
-      letter-spacing:5px;
-
-      line-height:1;
-
-      pointer-events:none;
-    }
-
-    /* CARROSSEL */
-
-    .carousel-wrapper{
-
-      position:relative;
-
-      width:100%;
-
-      height:100dvh;
-
-      overflow:hidden;
-    }
-
-    .carousel{
-
-      display:flex;
-
-      gap:0;
-
-      transition:0.7s ease;
-    }
-
-    .collection-card{
-
-      width:100vw;
-
-      height:100dvh;
-      
-
-      border-radius:0;
-
-      overflow:hidden;
-
-      position:relative;
-
-      flex-shrink:0;
-
-      cursor:pointer;
-    }
-
-    .collection-card img{
-
-      width:100vw;
-      height:100dvh;
-
-      object-fit:cover;
-
-      transition:1s;
-    }
-
-    .collection-card:hover img{
-
-      transform:scale(1.03);
-    }
-
-    .overlay{
-
-      position:absolute;
-
-      inset:0;
-
-      display:flex;
-
-      align-items:flex-end;
-
-      padding:60px;
-
-      background:
-      linear-gradient(
-      to top,
-      rgba(0,0,0,0.75),
-      rgba(0,0,0,0.05)
-      );
-    }
-
-    .overlay h2{
-
-      font-size:4rem;
-
-      font-weight:300;
-
-      text-transform:uppercase;
-
-      letter-spacing:4px;
-
-      line-height:1.1;
-
-      max-width:500px;
-    }
-
-    /* SETAS */
-
-    .arrow{
-
-      position:absolute;
-
-      top:50%;
-
-      transform:translateY(-50%);
-
-      width:65px;
-      height:65px;
+      border:none;
 
       border-radius:50%;
 
-      border:none;
-
-      background:rgba(0,0,0,0.45);
-
-      backdrop-filter:blur(10px);
+      background:#222;
 
       color:white;
 
-      font-size:2rem;
-
       cursor:pointer;
 
-      z-index:50;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      font-size:1.6rem;
+
+      font-weight:300;
+
+      line-height:0;
+
+      padding:0;
+
+      overflow:hidden;
 
       transition:0.3s;
     }
 
-    .arrow:hover{
+    .close-login:hover{
 
       background:#5560f7;
+
+      transform:scale(1.08);
     }
 
-    .left-arrow{
-      left:20px;
-    }
 
-    .right-arrow{
-      right:20px;
-    }
-
-    /* MOBILE */
-
-    @media(max-width:768px){
-
-      header{
-
-        padding:20px 5%;
-      }
-
-      .logo{
-
-        font-size:2rem;
-      }
+/* =========================
+   MOBILE
+========================= */
+ @media(max-width:768px){
 
       .menu-mobile{
         display:block;
+        position:absolute;
+        right:7%;
       }
 
       nav{
-
         position:absolute;
-
         top:100%;
         right:0;
-
         width:100%;
-
         background:#0a0a0a;
-
         flex-direction:column;
-
         align-items:center;
-
         gap:25px;
-
         padding:30px 0;
-
         display:none;
       }
 
@@ -315,253 +352,183 @@
         display:flex;
       }
 
-
-      .collections-title{
-
-        left:5%;
-
-        bottom:90px;
-
-        font-size:2.5rem;
-
-        letter-spacing:2px;
+      .header-login-btn{
+        display:none;
       }
 
-      .carousel{
-
-        gap:0;
+      .hero h1{
+        font-size:3.5rem;
       }
 
-      .collection-card{
-
-        min-width:100vw;
-
-        height:100vh;
-
-        border-radius:0;
-      }
-
-      .overlay{
-
-        padding:30px;
-      }
-
-      .overlay h2{
-
+      .section-title{
         font-size:2.2rem;
-
-        letter-spacing:2px;
-
-        line-height:1.1;
       }
 
-      .arrow{
-
-        width:50px;
-        height:50px;
-
-        font-size:1.3rem;
+      .banner h2{
+        font-size:2.5rem;
       }
 
-      .left-arrow{
-
-        left:10px;
-      }
-
-      .right-arrow{
-
-        right:10px;
+      .banner{
+        padding:50px 25px;
       }
 
     }
-
-  </style>
-
+</style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
+<header>
+  <div class="logo">O mundo vinil</div>
 
-  <header>
+  <button class="menu-mobile" onclick="toggleMenu()">☰</button>
 
-    <div class="logo">
-      O mundo vinil
-    </div>
-
-    <button class="menu-mobile" onclick="toggleMenu()">
-      ☰
+  <nav id="navbar">
+    <a href="index.html">Home</a>
+    <a href="vinis.html">Vinis</a>
+    <a href="colecao.html">Coleções</a>
+    <a href="#" >Contato</a>
+  </nav>
+  <button class="header-login-btn" id="login-btn" onclick="openLogin()">
+      Login
     </button>
 
-    <nav id="navbar">
+</header>
 
-      <a href="index.html">
-        Home
+<!-- COLEÇÕES -->
+<section class="collections">
+
+  <h1 class="collections-title">Creator's Choice</h1>
+
+  <div class="carousel-wrapper">
+
+    <button class="arrow left-arrow" onclick="moveSlide(-1)">‹</button>
+    <button class="arrow right-arrow" onclick="moveSlide(1)">›</button>
+
+    <div class="carousel" id="carousel">
+
+      <a href="vinis.html?categoria=gustavo" class="collection-card">
+        <img src="https://i.redd.it/c1czx9wrcxfb1.gif">
+        <div class="overlay"></div>
       </a>
 
-      <a href="vinis.html">
-        Vinis
+      <a href="vinis.html?categoria=rock" class="collection-card">
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWJvaWtnbWZzcHJpYm52azFocDJ5cnk2bWRuMHR4Y2NkMXhpZXJndCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gtIzb2whJJxLV3uwYL/giphy.gif">
+        <div class="overlay"></div>
       </a>
 
-      <a href="colecao.html">
-        Coleções
+      <a href="vinis.html?categoria=indie" class="collection-card">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnlmd2dyNWh4Y2hwcTZxZGtxc3M0YmxvanBubHU3Y2I1bmJnd2xkNyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/9C5wJj75dTvFwirIl6/giphy.gif">
+        <div class="overlay"></div>
       </a>
 
-      <a href="#">
-        Novidades
+      <a href="vinis.html?categoria=kpop" class="collection-card">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTViYm5hM3Y3bnBubmVsOW9ndHJxNjQ4ZmUydGN5amh0anplY3NzOSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/6teSBij2OdIJf2tdQG/giphy.gif">
+        <div class="overlay"></div>
       </a>
 
-    </nav>
-
-  </header>
-
-  <!-- COLEÇÕES -->
-
-  <section class="collections">
-
-    <h1 class="collections-title">
-      Creator's Choice
-    </h1>
-
-    <div class="carousel-wrapper">
-
-      <!-- SETAS -->
-
-      <button class="arrow left-arrow" onclick="moveSlide(-1)">
-        ‹
-      </button>
-
-      <button class="arrow right-arrow" onclick="moveSlide(1)">
-        ›
-      </button>
-
-      <!-- CARROSSEL -->
-
-      <div class="carousel" id="carousel">
-
-        <!-- CARD 1 -->
-
-        <a href="vinis.html?categoria=gustavo" class="collection-card">
-
-          <img src="https://i.redd.it/c1czx9wrcxfb1.gif">
-
-          <div class="overlay">
-
-            
-
-          </div>
-
-        </a>
-
-        <!-- CARD 2 -->
-
-        <a href="vinis.html?categoria=rock" class="collection-card">
-
-          <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWJvaWtnbWZzcHJpYm52azFocDJ5cnk2bWRuMHR4Y2NkMXhpZXJndCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gtIzb2whJJxLV3uwYL/giphy.gif">
-
-          <div class="overlay">
-
-           
-
-          </div>
-
-        </a>
-
-        <!-- CARD 3 -->
-
-        <a href="vinis.html?categoria=indie" class="collection-card">
-
-          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnlmd2dyNWh4Y2hwcTZxZGtxc3M0YmxvanBubHU3Y2I1bmJnd2xkNyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/9C5wJj75dTvFwirIl6/giphy.gif">
-
-          <div class="overlay">
-
-          
-
-          </div>
-
-        </a>
-
-        <!-- CARD 4 -->
-
-        <a href="vinis.html?categoria=kpop" class="collection-card">
-
-          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTViYm5hM3Y3bnBubmVsOW9ndHJxNjQ4ZmUydGN5amh0anplY3NzOSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/6teSBij2OdIJf2tdQG/giphy.gif">
-
-          <div class="overlay">
-
-            
-          </div>
-
-        </a>
-
-        <!-- CARD 5 -->
-
-        <a href="vinis.html?categoria=exclusive" class="collection-card">
-
-          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmtoZHRpamthZThqbW5qbG1rNnlydGp2azkxb2NqOXc0NWoyNmZmZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/QyyWfILLmEKcT4LoFa/giphy.gif">
-
-          <div class="overlay">
-
-            
-
-          </div>
-
-        </a>
-
-      </div>
+      <a href="vinis.html?categoria=exclusive" class="collection-card">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmtoZHRpamthZThqbW5qbG1rNnlydGp2azkxb2NqOXc0NWoyNmZmZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/QyyWfILLmEKcT4LoFa/giphy.gif">
+        <div class="overlay"></div>
+      </a>
 
     </div>
 
-  </section>
+  </div>
+</section>
 
-  <script>
+<!-- LOGIN -->
+<div class="login-popup" id="loginPopup">
+  <div class="login-box">
 
-    /* MENU MOBILE */
+    <button class="close-login" onclick="closeLogin()">×</button>
 
-    function toggleMenu(){
+    <h2>Entrar</h2>
 
-      const nav =
-      document.getElementById("navbar");
+    <input type="text" id="username" placeholder="Seu nome">
 
-      nav.classList.toggle("active");
+    <button onclick="login()">Continuar</button>
+
+  </div>
+</div>
+
+<script>
+
+let currentIndex = 0;
+
+function moveSlide(direction){
+
+  const carousel = document.getElementById("carousel");
+  const cards = document.querySelectorAll(".collection-card");
+  const cardWidth = window.innerWidth;
+
+  currentIndex += direction;
+
+  if(currentIndex >= cards.length) currentIndex = 0;
+  if(currentIndex < 0) currentIndex = cards.length - 1;
+
+  carousel.style.transform =
+    `translateX(-${currentIndex * cardWidth}px)`;
+}
+
+/* MENU */
+function toggleMenu(){
+  document.getElementById("navbar").classList.toggle("active");
+}
+
+function openLogin(){
+
+    document
+    .getElementById("loginPopup")
+    .classList.add("active");
+
+  }
+
+  function closeLogin(){
+
+    document
+    .getElementById("loginPopup")
+    .classList.remove("active");
+
+  }
+
+  function login(){
+
+    const username =
+    document.getElementById("username").value;
+
+    if(username.trim() === "") return;
+
+    localStorage.setItem("vinylUser", username);
+
+    updateLoginButton();
+
+    closeLogin();
+
+  }
+
+  function updateLoginButton(){
+
+    const user =
+    localStorage.getItem("vinylUser");
+
+    const loginBtn =
+    document.getElementById("login-btn");
+
+    if(user){
+
+      loginBtn.innerText = user;
+
+    } else {
+
+      loginBtn.innerText = "Login";
 
     }
 
-    /* CARROSSEL */
+  }
 
-    const carousel =
-    document.getElementById("carousel");
-
-    const cards =
-    document.querySelectorAll(".collection-card");
-
-    let currentIndex = 0;
-
-    function moveSlide(direction){
-
-      const cardWidth = window.innerWidth;
-
-      currentIndex += direction;
-
-      /* LOOP INFINITO */
-
-      if(currentIndex >= cards.length){
-
-        currentIndex = 0;
-      }
-
-      if(currentIndex < 0){
-
-        currentIndex = cards.length - 1;
-      }
-
-      carousel.style.transform =
-      `translateX(-${currentIndex * cardWidth}px)`;
-
-    }
-
-  </script>
+  updateLoginButton();
+</script>
 
 </body>
-
 </html>

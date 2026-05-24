@@ -56,7 +56,11 @@
       border-bottom:
       1px solid rgba(255,255,255,0.08);
     }
-
+    .header-actions{
+     display:flex;
+     align-items:center;
+     gap:20px;
+    }
     .logo{
       font-family:'Heaven';
       font-size:2rem;
@@ -104,24 +108,23 @@
       cursor:pointer;
 
       position:relative;
+
+      display:flex;
+
+      align-items:center;
+
+      gap:6px;
     }
 
-    #cart-count{
-
+     #cart-count{
       background:#85fc60;
-
       color:black;
-
-      font-size:0.8rem;
-
-      padding:3px 8px;
-
+     font-size:0.8rem;
+     padding:3px 8px;
       border-radius:50px;
-
-      position:absolute;
-
-      top:-10px;
-      right:-15px;
+     position:absolute;
+     top:-8px;
+     right:-12px;
     }
 
     /* SIDEBAR */
@@ -573,6 +576,29 @@
 
   transform:scale(1.1);
 }
+#login-btn{
+
+  padding:10px 24px;
+
+  border-radius:40px;
+
+  background:#5560f7;
+
+  color:white;
+
+  font-weight:bold;
+
+  transition:0.3s;
+}
+
+#login-btn:hover{
+
+  background:#6b74ff;
+
+  color:white;
+
+  transform:scale(1.05);
+}
     @media(max-width:768px){
 
       .menu-mobile{
@@ -636,26 +662,42 @@
 
   <header>
 
-    <div class="logo">
-      O mundo vinil
-    </div>
+  <div class="logo">O mundo vinil</div>
 
-    <button class="menu-mobile" onclick="toggleMenu()">
-      ☰
+  <button class="menu-mobile" onclick="toggleMenu()">
+    ☰
+  </button>
+
+  <!-- NAV CENTRALIZADA -->
+  <nav id="navbar">
+
+    <a href="index.html">Home</a>
+
+    <a href="vinis.html">Vinis</a>
+
+    <a href="colecao.html">Coleções</a>
+
+    <a href="#">Novidades</a>
+
+  </nav>
+
+  <!-- DIREITA -->
+  <div class="header-actions">
+
+    <!-- LOGIN -->
+    <button class="header-login-btn" id="login-btn" onclick="openLogin()">
+      Login
     </button>
 
-    <nav id="navbar">
-      <a href="index.html">Home</a>
-      <a href="vinis.html">Vinis</a>
-      <a href="colecao.html">Coleções</a>
-      <a href="#">Novidades</a>
-    </nav>
-
+    <!-- CARRINHO -->
     <div class="cart-icon" onclick="toggleCart()">
-      🛒 <span id="cart-count">0</span>
+      🛒
+      <span id="cart-count">0</span>
     </div>
 
-  </header>
+  </div>
+
+</header>
 
   <!-- STORE -->
 
@@ -1096,6 +1138,60 @@ function closePopup(){
   popup.classList.remove("active");
 
 }
+/* LOGIN */
+
+function openLogin(){
+
+    document
+    .getElementById("loginPopup")
+    .classList.add("active");
+
+  }
+
+  function closeLogin(){
+
+    document
+    .getElementById("loginPopup")
+    .classList.remove("active");
+
+  }
+
+  function login(){
+
+    const username =
+    document.getElementById("username").value;
+
+    if(username.trim() === "") return;
+
+    localStorage.setItem("vinylUser", username);
+
+    updateLoginButton();
+
+    closeLogin();
+
+  }
+
+  function updateLoginButton(){
+
+    const user =
+    localStorage.getItem("vinylUser");
+
+    const loginBtn =
+    document.getElementById("login-btn");
+
+    if(user){
+
+      loginBtn.innerText = user;
+
+    } else {
+
+      loginBtn.innerText = "Login";
+
+    }
+
+  }
+
+  updateLoginButton();
   </script>
 
 </body>

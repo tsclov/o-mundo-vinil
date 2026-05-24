@@ -53,6 +53,7 @@
     nav{
       display:flex;
       gap:35px;
+      align-items:center;
     }
 
     nav a{
@@ -73,6 +74,24 @@
       color:white;
       font-size:2rem;
       cursor:pointer;
+    }
+
+    /* BOTÃO LOGIN IGUAL AO OUTRO HEADER */
+
+    .header-login-btn{
+      padding:14px 30px;
+      border:none;
+      border-radius:50px;
+      background:#5560f7;
+      color:white;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.3s;
+      font-size:0.95rem;
+    }
+
+    .header-login-btn:hover{
+      transform:scale(1.05);
     }
 
     .hero{
@@ -158,51 +177,51 @@
     .carousel-buttons{
       position:relative;
       display:flex;
-     align-items:center;
+      align-items:center;
     }
 
     .arrow{
-  position:absolute;
+      position:absolute;
 
-  top:250px;
-  transform:translateY(-50%);
+      top:250px;
+      transform:translateY(-50%);
 
-  width:55px;
-  height:55px;
+      width:55px;
+      height:55px;
 
-  border:none;
-  border-radius:50%;
+      border:none;
+      border-radius:50%;
 
-  background:#5558f7e6;
-  color:white;
+      background:#5558f7e6;
+      color:white;
 
-  font-size:1.5rem;
+      font-size:1.5rem;
 
-  cursor:pointer;
+      cursor:pointer;
 
-  z-index:100;
+      z-index:100;
 
-  transition:0.3s;
+      transition:0.3s;
 
-  backdrop-filter:blur(10px);
+      backdrop-filter:blur(10px);
 
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
 
-.arrow:hover{
-  background:#85fc60;
-  transform:translateY(-50%) scale(1.08);
-}
+    .arrow:hover{
+      background:#85fc60;
+      transform:translateY(-50%) scale(1.08);
+    }
 
-.left{
-  left:-20px;
-}
+    .left{
+      left:-20px;
+    }
 
-.right{
-  right:-20px;
-}
+    .right{
+      right:-20px;
+    }
 
     .vinyl-card{
       min-width:280px;
@@ -392,35 +411,36 @@
     
     .popup-btn{
 
-  display:block;
+      display:block;
 
-  width:100%;
+      width:100%;
 
-  margin-top:20px;
+      margin-top:20px;
 
-  padding:14px;
+      padding:14px;
 
-  border-radius:14px;
+      border-radius:14px;
 
-  background:#5560f7;
+      background:#5560f7;
 
-  color:white;
+      color:white;
 
-  text-decoration:none;
+      text-decoration:none;
 
-  text-align:center;
+      text-align:center;
 
-  font-weight:bold;
+      font-weight:bold;
 
-  transition:0.3s;
-}
+      transition:0.3s;
+    }
 
-.popup-btn:hover{
+    .popup-btn:hover{
 
-  background:#6b74ff;
+      background:#6b74ff;
 
-  transform:scale(1.02);
-}
+      transform:scale(1.02);
+    }
+
     .close-popup{
 
       position:absolute;
@@ -467,6 +487,136 @@
 
     }
 
+    .login-popup{
+
+      position:fixed;
+      inset:0;
+
+      background:rgba(0,0,0,0.6);
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      opacity:0;
+      pointer-events:none;
+
+      transition:0.3s;
+
+      z-index:6000;
+    }
+
+    .login-popup.active{
+
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .login-box{
+
+      width:90%;
+      max-width:400px;
+
+      background:#111;
+
+      padding:30px;
+
+      border-radius:25px;
+
+      border:1px solid rgba(255,255,255,0.08);
+
+      position:relative;
+    }
+
+    .login-box h2{
+
+      margin-bottom:20px;
+
+      color:#b3b8ff;
+    }
+
+    .login-box input{
+
+      width:100%;
+
+      padding:15px;
+
+      border:none;
+
+      border-radius:14px;
+
+      background:#1c1c1c;
+
+      color:white;
+
+      margin-bottom:20px;
+
+      outline:none;
+    }
+
+    .login-btn{
+
+      width:100%;
+
+      padding:15px;
+
+      border:none;
+
+      border-radius:14px;
+
+      background:#5560f7;
+
+      color:white;
+
+      font-weight:bold;
+
+      cursor:pointer;
+    }
+
+    .close-login{
+
+      position:absolute;
+
+      top:12px;
+      right:12px;
+
+      width:36px;
+      height:36px;
+
+      border:none;
+
+      border-radius:50%;
+
+      background:#222;
+
+      color:white;
+
+      cursor:pointer;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      font-size:1.6rem;
+
+      font-weight:300;
+
+      line-height:0;
+
+      padding:0;
+
+      overflow:hidden;
+
+      transition:0.3s;
+    }
+
+    .close-login:hover{
+
+      background:#5560f7;
+
+      transform:scale(1.08);
+    }
+
     @media(max-width:768px){
 
       .menu-mobile{
@@ -490,6 +640,10 @@
 
       nav.active{
         display:flex;
+      }
+
+      .header-login-btn{
+        display:none;
       }
 
       .hero h1{
@@ -530,329 +684,426 @@
       <a href="#">Novidades</a>
     </nav>
 
+    <!-- BOTÃO LOGIN NOVO -->
+    <button class="header-login-btn" id="login-btn" onclick="openLogin()">
+      Login
+    </button>
+
   </header>
 
-  <section class="hero">
+<section class="hero">
 
-    <div class="hero-content">
+  <div class="hero-content">
 
-      <h1>Mundo<br>Vinil</h1>
+    <h1>
+      Mundo<br>Vinil
+    </h1>
 
-      <p>
-        sua loja de vinis :0
-      </p>
+    <p>
+      sua loja de vinis :0
+    </p>
 
-      <a href="vinis.html" class="btn">
-        Comprar Agora
-      </a>
-
-    </div>
-
-  </section>
-
-  <section>
-
-    <h2 class="section-title">
-      Vinis em destaque
-    </h2>
-
-    <div class="carousel-container">
-
-      <div class="carousel-buttons">
-
-        <button class="arrow left" onclick="scrollCarousel(-1)">
-          ❮
-        </button>
-
-        <button class="arrow right" onclick="scrollCarousel(1)">
-          ❯
-        </button>
-
-        <div class="carousel" id="vinylCarousel">
-
-         
-
-  <!-- CARD 1 -->
-
-  <div class="vinyl-card"
-  onclick="openPopup(
-  'you seem pretty sad for a girl so in love',
-  'Olivia Rodrigo',
-  'https://store.oliviarodrigo.com/cdn/shop/files/02_girlsoinlove-exclusive_stickysweet_hotpinkvinyl.png?v=1775142228&width=1400',
-  'Vinil edição exclusiva pink edition da Olivia Rodrigo com capa especial e prensagem colorida.',
-  'R$ 269',
-  'vinis.html?categoria=pink'
-  )">
-
-    <img src="https://store.oliviarodrigo.com/cdn/shop/files/02_girlsoinlove-exclusive_stickysweet_hotpinkvinyl.png?v=1775142228&width=1400">
-
-    <div class="card-content">
-
-      <div class="album">
-        you seem pretty sad for a girl so in love
-      </div>
-
-      <div class="artist">
-        Olivia Rodrigo
-      </div>
-
-      <div class="price">
-        R$ 269
-      </div>
-
-    </div>
+    <a href="vinis.html" class="btn">
+      Comprar Agora
+    </a>
 
   </div>
 
-  <!-- CARD 2 -->
+</section>
 
-  <div class="vinyl-card"
-  onclick="openPopup(
-  'you seem pretty sad for a girl so in love - picture disc edition',
-  'Olivia Rodrigo',
-  'https://store.oliviarodrigo.com/cdn/shop/files/1ST_0000s_0016_YLPSFGSIL-Picture-Disc---Disc-With-Sleeve.png?v=1779397650&width=1200',
-  'Picture disc edition exclusiva com arte estampada diretamente no disco.',
-  'R$ 189'
-  )">
+<section>
 
-    <img src="https://store.oliviarodrigo.com/cdn/shop/files/1ST_0000s_0016_YLPSFGSIL-Picture-Disc---Disc-With-Sleeve.png?v=1779397650&width=1200">
+  <h2 class="section-title">
+    Vinis em destaque
+  </h2>
 
-    <div class="card-content">
+  <div class="carousel-container">
 
-      <div class="album">
-        you seem pretty sad for a girl so in love
-        <br>
-        picture disc edition
-      </div>
+    <div class="carousel-buttons">
 
-      <div class="artist">
-        Olivia Rodrigo
-      </div>
-
-      <div class="price">
-        R$ 189
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- CARD 3 -->
-
-  <div class="vinyl-card"
-  onclick="openPopup(
-  'you seem pretty sad for a girl so in love - signed',
-  'Olivia Rodrigo',
-  'https://store.oliviarodrigo.com/cdn/shop/files/01_girlsoinlove-exclusive180-gramvinyl_signed.png?v=1775142201&width=1200',
-  'Versão assinada limitada em vinil 180g para colecionadores.',
-  'R$ 299'
-  )">
-
-    <img src="https://store.oliviarodrigo.com/cdn/shop/files/01_girlsoinlove-exclusive180-gramvinyl_signed.png?v=1775142201&width=1200">
-
-    <div class="card-content">
-
-      <div class="album">
-        you seem pretty sad for a girl so in love
-        <br>
-        - signed
-      </div>
-
-      <div class="artist">
-        Olivia Rodrigo
-      </div>
-
-      <div class="price">
-        R$ 299
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- CARD 4 -->
-
-  <div class="vinyl-card"
-  onclick="openPopup(
-  'THE TORTURED POETS DEPARTMENT',
-  'Taylor Swift',
-  'https://store.taylorswift.com/cdn/shop/files/oIrR9qXXeQRc3OuzsMq1YAqie8MY8mhq-2_1.png?v=1749674281&width=550',
-  'Edição especial do álbum THE TORTURED POETS DEPARTMENT com faixa bônus.',
-  'R$ 228'
-  )">
-
-    <img src="https://store.taylorswift.com/cdn/shop/files/oIrR9qXXeQRc3OuzsMq1YAqie8MY8mhq-2_1.png?v=1749674281&width=550">
-
-    <div class="card-content">
-
-      <div class="album">
-        THE TORTURED POETS DEPARTMENT
-      </div>
-
-      <div class="artist">
-        Taylor Swift
-      </div>
-
-      <div class="price">
-        R$ 228
-      </div>
-
-    </div>
-
-  </div>
- </div>
-</div>
-
-    <div class="banner">
-
-      <h2>
-        Creator's Pick
-      </h2>
-
-      <p>
-        Veja aqui as escolhas dos melhores discos pelos criadores do site.
-      </p>
-
-      <a href="colecao.html" class="btn">
-        Ver coleção
-      </a>
-
-    </div>
-
-  </section>
-
-  <footer>
-    O mundo vinil, 2026&copy;
-  </footer>
-
-  <!-- POPUP -->
-
-  <div class="popup" id="popup">
-
-    <div class="popup-box">
-
-      <button class="close-popup" onclick="closePopup()">
-        ✕
+      <button class="arrow left" onclick="scrollCarousel(-1)">
+        ❮
       </button>
 
-      <img id="popup-img" src="" alt="Album">
+      <button class="arrow right" onclick="scrollCarousel(1)">
+        ❯
+      </button>
 
-      <h2 id="popup-title"></h2>
+      <div class="carousel" id="vinylCarousel">
 
-      <h3 id="popup-artist"></h3>
+        <!-- CARD 1 -->
 
-      <p id="popup-description"></p>
+        <div class="vinyl-card"
+        onclick="openPopup(
+        'you seem pretty sad for a girl so in love',
+        'Olivia Rodrigo',
+        'https://store.oliviarodrigo.com/cdn/shop/files/02_girlsoinlove-exclusive_stickysweet_hotpinkvinyl.png?v=1775142228&width=1400',
+        'Vinil edição exclusiva pink edition da Olivia Rodrigo com capa especial e prensagem colorida.',
+        'R$ 269',
+        'vinis.html?categoria=pink'
+        )">
 
-      <div class="popup-price" id="popup-price"></div>
-      <a href="vinis.html" class="popup-btn" id="popup-link">
-      Ver na loja
-      </a>
+          <img src="https://store.oliviarodrigo.com/cdn/shop/files/02_girlsoinlove-exclusive_stickysweet_hotpinkvinyl.png?v=1775142228&width=1400">
+
+          <div class="card-content">
+
+            <div class="album">
+              you seem pretty sad for a girl so in love
+            </div>
+
+            <div class="artist">
+              Olivia Rodrigo
+            </div>
+
+            <div class="price">
+              R$ 269
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- CARD 2 -->
+
+        <div class="vinyl-card"
+        onclick="openPopup(
+        'you seem pretty sad for a girl so in love - picture disc edition',
+        'Olivia Rodrigo',
+        'https://store.oliviarodrigo.com/cdn/shop/files/1ST_0000s_0016_YLPSFGSIL-Picture-Disc---Disc-With-Sleeve.png?v=1779397650&width=1200',
+        'Picture disc edition exclusiva com arte estampada diretamente no disco.',
+        'R$ 189'
+        )">
+
+          <img src="https://store.oliviarodrigo.com/cdn/shop/files/1ST_0000s_0016_YLPSFGSIL-Picture-Disc---Disc-With-Sleeve.png?v=1779397650&width=1200">
+
+          <div class="card-content">
+
+            <div class="album">
+              you seem pretty sad for a girl so in love
+              <br>
+              picture disc edition
+            </div>
+
+            <div class="artist">
+              Olivia Rodrigo
+            </div>
+
+            <div class="price">
+              R$ 189
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- CARD 3 -->
+
+        <div class="vinyl-card"
+        onclick="openPopup(
+        'you seem pretty sad for a girl so in love - signed',
+        'Olivia Rodrigo',
+        'https://store.oliviarodrigo.com/cdn/shop/files/01_girlsoinlove-exclusive180-gramvinyl_signed.png?v=1775142201&width=1200',
+        'Versão assinada limitada em vinil 180g para colecionadores.',
+        'R$ 299'
+        )">
+
+          <img src="https://store.oliviarodrigo.com/cdn/shop/files/01_girlsoinlove-exclusive180-gramvinyl_signed.png?v=1775142201&width=1200">
+
+          <div class="card-content">
+
+            <div class="album">
+              you seem pretty sad for a girl so in love
+              <br>
+              - signed
+            </div>
+
+            <div class="artist">
+              Olivia Rodrigo
+            </div>
+
+            <div class="price">
+              R$ 299
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- CARD 4 -->
+
+        <div class="vinyl-card"
+        onclick="openPopup(
+        'THE TORTURED POETS DEPARTMENT',
+        'Taylor Swift',
+        'https://store.taylorswift.com/cdn/shop/files/oIrR9qXXeQRc3OuzsMq1YAqie8MY8mhq-2_1.png?v=1749674281&width=550',
+        'Edição especial do álbum THE TORTURED POETS DEPARTMENT com faixa bônus.',
+        'R$ 228'
+        )">
+
+          <img src="https://store.taylorswift.com/cdn/shop/files/oIrR9qXXeQRc3OuzsMq1YAqie8MY8mhq-2_1.png?v=1749674281&width=550">
+
+          <div class="card-content">
+
+            <div class="album">
+              THE TORTURED POETS DEPARTMENT
+            </div>
+
+            <div class="artist">
+              Taylor Swift
+            </div>
+
+            <div class="price">
+              R$ 228
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
 
     </div>
 
   </div>
 
-  <script>
+  <div class="banner">
 
-    const carousel =
-    document.getElementById("vinylCarousel");
+    <h2>
+      Creator's Pick
+    </h2>
 
-    const scrollAmount = 320;
+    <p>
+      Veja aqui as escolhas dos melhores discos pelos criadores do site.
+    </p>
 
-    function scrollCarousel(direction){
+    <a href="colecao.html" class="btn">
+      Ver coleção
+    </a>
 
-      const maxScrollLeft =
-      carousel.scrollWidth - carousel.clientWidth;
+  </div>
 
-      if(direction === 1){
+</section>
 
-        if(carousel.scrollLeft >= maxScrollLeft - 4){
+<footer>
+  O mundo vinil, 2026&copy;
+</footer>
 
-          carousel.scrollTo({
-            left:0,
-            behavior:"smooth"
-          });
+<!-- POPUP -->
 
-        } else {
+<div class="popup" id="popup">
 
-          carousel.scrollBy({
-            left:scrollAmount,
-            behavior:"smooth"
-          });
+  <div class="popup-box">
 
-        }
+    <button class="close-popup" onclick="closePopup()">
+      ✕
+    </button>
+
+    <img id="popup-img" src="" alt="Album">
+
+    <h2 id="popup-title"></h2>
+
+    <h3 id="popup-artist"></h3>
+
+    <p id="popup-description"></p>
+
+    <div class="popup-price" id="popup-price"></div>
+
+    <a href="vinis.html" class="popup-btn" id="popup-link">
+      Ver na loja
+    </a>
+
+  </div>
+
+</div>
+
+<!-- LOGIN -->
+
+<div class="login-popup" id="loginPopup">
+
+  <div class="login-box">
+
+    <button class="close-login" onclick="closeLogin()">
+      &times;
+    </button>
+
+    <h2>
+      Entrar
+    </h2>
+
+    <input
+      type="text"
+      id="username"
+      placeholder="Seu nome"
+    >
+
+    <input
+      type="password"
+      id="password"
+      placeholder="Sua senha"
+    >
+
+    <button class="login-btn" onclick="login()">
+      Continuar
+    </button>
+
+  </div>
+
+</div>
+
+<script>
+
+  const carousel =
+  document.getElementById("vinylCarousel");
+
+  const scrollAmount = 320;
+
+  function scrollCarousel(direction){
+
+    const maxScrollLeft =
+    carousel.scrollWidth - carousel.clientWidth;
+
+    if(direction === 1){
+
+      if(carousel.scrollLeft >= maxScrollLeft - 4){
+
+        carousel.scrollTo({
+          left:0,
+          behavior:"smooth"
+        });
 
       } else {
 
-        if(carousel.scrollLeft <= 4){
+        carousel.scrollBy({
+          left:scrollAmount,
+          behavior:"smooth"
+        });
 
-          carousel.scrollTo({
-            left:maxScrollLeft,
-            behavior:"smooth"
-          });
+      }
 
-        } else {
+    } else {
 
-          carousel.scrollBy({
-            left:-scrollAmount,
-            behavior:"smooth"
-          });
+      if(carousel.scrollLeft <= 4){
 
-        }
+        carousel.scrollTo({
+          left:maxScrollLeft,
+          behavior:"smooth"
+        });
+
+      } else {
+
+        carousel.scrollBy({
+          left:-scrollAmount,
+          behavior:"smooth"
+        });
 
       }
 
     }
 
-    function toggleMenu(){
+  }
 
-      const nav =
-      document.getElementById("navbar");
+  function toggleMenu(){
 
-      nav.classList.toggle("active");
+    const nav =
+    document.getElementById("navbar");
+
+    nav.classList.toggle("active");
+
+  }
+
+  function openPopup(
+    title,
+    artist,
+    image,
+    description,
+    price,
+    link
+  ){
+
+    document.getElementById("popup")
+    .classList.add("active");
+
+    document.getElementById("popup-title")
+    .innerText = title;
+
+    document.getElementById("popup-artist")
+    .innerText = artist;
+
+    document.getElementById("popup-img")
+    .src = image;
+
+    document.getElementById("popup-description")
+    .innerText = description;
+
+    document.getElementById("popup-price")
+    .innerText = price;
+
+    document.getElementById("popup-link").href =
+    link || "vinis.html";
+
+  }
+
+  function closePopup(){
+
+    document.getElementById("popup")
+    .classList.remove("active");
+
+  }
+
+  function openLogin(){
+
+    document
+    .getElementById("loginPopup")
+    .classList.add("active");
+
+  }
+
+  function closeLogin(){
+
+    document
+    .getElementById("loginPopup")
+    .classList.remove("active");
+
+  }
+
+  function login(){
+
+    const username =
+    document.getElementById("username").value;
+
+    if(username.trim() === "") return;
+
+    localStorage.setItem("vinylUser", username);
+
+    updateLoginButton();
+
+    closeLogin();
+
+  }
+
+  function updateLoginButton(){
+
+    const user =
+    localStorage.getItem("vinylUser");
+
+    const loginBtn =
+    document.getElementById("login-btn");
+
+    if(user){
+
+      loginBtn.innerText = user;
+
+    } else {
+
+      loginBtn.innerText = "Login";
 
     }
 
-    function openPopup(
-      title,
-      artist,
-      image,
-      description,
-      price,
-      link 
-      
-     ){
-      
-      document.getElementById("popup")
-      .classList.add("active");
+  }
 
-      document.getElementById("popup-title")
-      .innerText = title;
+  updateLoginButton();
 
-      document.getElementById("popup-artist")
-      .innerText = artist;
-
-      document.getElementById("popup-img")
-      .src = image;
-
-      document.getElementById("popup-description")
-      .innerText = description;
-
-      document.getElementById("popup-price")
-      .innerText = price;
-     
-      document.getElementById("popup-link")
-      .href = link;
-    }
-
-    function closePopup(){
-
-      document.getElementById("popup")
-      .classList.remove("active");
-
-    }
-
-  </script>
+</script>
 
 </body>
 </html>
