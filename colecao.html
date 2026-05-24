@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Coleções</title>
+
+  <style>
+
+    @font-face{
+      font-family:'Heaven';
+      src:url('./JustLikeHeaven_v2.otf') format('opentype');
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      background:#050505;
+      color:white;
+      font-family:Arial, Helvetica, sans-serif;
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:white;
+    }
+
+    /* HEADER */
+
+    header{
+
+      width:100%;
+
+      position:fixed;
+
+      top:0;
+      left:0;
+
+      z-index:999;
+
+      padding:24px 7%;
+
+      display:flex;
+
+      justify-content:space-between;
+
+      align-items:center;
+
+      backdrop-filter:blur(14px);
+
+      background:rgba(0,0,0,0.45);
+
+      border-bottom:
+      1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo{
+
+      font-family:'Heaven';
+
+      font-size:2rem;
+
+      letter-spacing:3px;
+
+      color:#b3b8ff;
+    }
+
+    nav{
+
+      display:flex;
+
+      gap:35px;
+    }
+
+    nav a{
+
+      transition:0.3s;
+    }
+
+    nav a:hover{
+
+      color:#b3ffb7;
+    }
+
+    /* HERO */
+
+    .collections{
+
+      width:100%;
+
+      min-height:100vh;
+
+      padding:150px 7% 100px;
+
+      display:flex;
+
+      flex-direction:column;
+
+      justify-content:center;
+    }
+
+    .collections-title{
+
+      font-family:'Heaven';
+
+      font-size:4rem;
+
+      margin-bottom:60px;
+
+      letter-spacing:4px;
+    }
+
+    /* CARROSSEL */
+
+    .carousel-wrapper{
+
+      position:relative;
+
+      width:100%;
+
+      overflow:hidden;
+    }
+
+    .carousel{
+
+      display:flex;
+
+      gap:30px;
+
+      transition:0.5s ease;
+    }
+
+    .collection-card{
+
+      min-width:420px;
+
+      height:600px;
+
+      border-radius:28px;
+
+      overflow:hidden;
+
+      position:relative;
+
+      flex-shrink:0;
+
+      cursor:pointer;
+
+      border:
+      1px solid rgba(255,255,255,0.08);
+
+      transition:0.4s;
+    }
+
+    .collection-card:hover{
+
+      transform:scale(0.98);
+
+      border-color:#5560f7;
+    }
+
+    .collection-card img{
+
+      width:100%;
+      height:100%;
+
+      object-fit:cover;
+    }
+
+    .overlay{
+
+      position:absolute;
+
+      inset:0;
+
+      background:
+      linear-gradient(
+      to top,
+      rgba(0,0,0,0.9),
+      rgba(0,0,0,0.15)
+      );
+
+      display:flex;
+
+      align-items:flex-end;
+
+      padding:35px;
+    }
+
+    .overlay h2{
+
+      font-size:2rem;
+
+      line-height:1.3;
+    }
+
+    /* SETAS */
+
+    .arrow{
+
+      position:absolute;
+
+      top:50%;
+
+      transform:translateY(-50%);
+
+      width:65px;
+      height:65px;
+
+      border-radius:50%;
+
+      border:none;
+
+      background:rgba(0,0,0,0.55);
+
+      backdrop-filter:blur(10px);
+
+      color:white;
+
+      font-size:2rem;
+
+      cursor:pointer;
+
+      z-index:10;
+
+      transition:0.3s;
+    }
+
+    .arrow:hover{
+
+      background:#5560f7;
+    }
+
+    .left-arrow{
+      left:15px;
+    }
+
+    .right-arrow{
+      right:15px;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:768px){
+
+      .collections{
+
+        padding:140px 5% 80px;
+      }
+
+      .collections-title{
+
+        font-size:2.5rem;
+      }
+
+      .collection-card{
+
+        min-width:85vw;
+
+        height:500px;
+      }
+
+      .arrow{
+
+        width:55px;
+        height:55px;
+
+        font-size:1.5rem;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="logo">
+      O mundo vinil
+    </div>
+
+    <nav>
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="vinis.html">
+        Vinis
+      </a>
+
+      <a href="colecao.html">
+        Coleções
+      </a>
+
+      <a href="#">
+        Novidades
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- COLEÇÕES -->
+
+  <section class="collections">
+
+    <h1 class="collections-title">
+      Creator's Choice
+    </h1>
+
+    <div class="carousel-wrapper">
+
+      <!-- SETAS -->
+
+      <button class="arrow left-arrow" onclick="moveSlide(-1)">
+        ‹
+      </button>
+
+      <button class="arrow right-arrow" onclick="moveSlide(1)">
+        ›
+      </button>
+
+      <!-- CARROSSEL -->
+
+      <div class="carousel" id="carousel">
+
+        <!-- CARD 1 -->
+
+        <a href="vinis.html?categoria=gustavo" class=collection-card>
+
+          <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1200">
+
+          <div class="overlay">
+
+            <h2>
+              Pop Collection
+            </h2>
+
+          </div>
+
+        </a>
+
+        <!-- CARD 2 -->
+
+        <a href="rock.html" class="collection-card">
+
+          <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1200">
+
+          <div class="overlay">
+
+            <h2>
+              Rock Collection
+            </h2>
+
+          </div>
+
+        </a>
+
+        <!-- CARD 3 -->
+
+        <a href="indie.html" class="collection-card">
+
+          <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1200">
+
+          <div class="overlay">
+
+            <h2>
+              Indie Collection
+            </h2>
+
+          </div>
+
+        </a>
+
+        <!-- CARD 4 -->
+
+        <a href="kpop.html" class="collection-card">
+
+          <img src="https://images.unsplash.com/photo-1499364615650-ec38552f4f34?q=80&w=1200">
+
+          <div class="overlay">
+
+            <h2>
+              K-pop Collection
+            </h2>
+
+          </div>
+
+        </a>
+
+        <!-- CARD 5 -->
+
+        <a href="exclusive.html" class="collection-card">
+
+          <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1200">
+
+          <div class="overlay">
+
+            <h2>
+              Exclusive Vinyls
+            </h2>
+
+          </div>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <script>
+
+    const carousel =
+    document.getElementById("carousel");
+
+    const cards =
+    document.querySelectorAll(".collection-card");
+
+    let currentIndex = 0;
+
+    function moveSlide(direction){
+
+      const cardWidth =
+      cards[0].offsetWidth + 30;
+
+      currentIndex += direction;
+
+      /* LOOP INFINITO */
+
+      if(currentIndex >= cards.length){
+
+        currentIndex = 0;
+      }
+
+      if(currentIndex < 0){
+
+        currentIndex = cards.length - 1;
+      }
+
+      carousel.style.transform =
+      `translateX(-${currentIndex * cardWidth}px)`;
+
+    }
+
+  </script>
+
+</body>
+
+</html>

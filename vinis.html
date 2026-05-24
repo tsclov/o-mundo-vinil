@@ -647,7 +647,7 @@
     <nav id="navbar">
       <a href="index.html">Home</a>
       <a href="vinis.html">Vinis</a>
-      <a href="#">Coleções</a>
+      <a href="colecao.html">Coleções</a>
       <a href="#">Novidades</a>
     </nav>
 
@@ -674,12 +674,13 @@
         id="searchInput"
         placeholder="Buscar artista ou álbum...">
 
-        <select>
+        <select id="categorySelect">
           <option>Todos</option>
           <option>Pop</option>
           <option>Rock</option>
           <option>Indie</option>
           <option>K-pop</option>
+         
         </select>
 
       </div>
@@ -694,6 +695,7 @@
 
       <a class="card-link"
       data-name="olivia rodrigo hot pink vinyl"
+      data-category="pop gustavo"
       href="#">
 
         <div class="vinyl-card">
@@ -740,6 +742,7 @@
 
       <a class="card-link"
       data-name="olivia rodrigo you seem pretty sad for a girl so in love picture disc edition"
+      data-category="gustavo pop"
       href="#">
 
         <div class="vinyl-card">
@@ -903,7 +906,7 @@
     document.querySelectorAll(".card-link");
 
     searchInput.addEventListener("input", () => {
-
+  
       const search =
       searchInput.value.toLowerCase();
 
@@ -926,7 +929,72 @@
       });
 
     });
+    /* FILTRO DE CATEGORIA */
 
+const categorySelect =
+document.getElementById("categorySelect");
+
+categorySelect.addEventListener("change", () => {
+
+  const selectedCategory =
+  categorySelect.value.toLowerCase();
+
+  cards.forEach(card => {
+
+    const categories =
+    (card.dataset.category || "")
+    .toLowerCase()
+    .split(" ");
+
+    if(
+
+      selectedCategory === "todos" ||
+
+      categories.includes(selectedCategory)
+
+    ){
+
+      card.style.display = "block";
+
+    } else {
+
+      card.style.display = "none";
+
+    }
+
+  });
+
+});
+/* FILTRO POR URL */
+
+const params =
+new URLSearchParams(window.location.search);
+
+const categoria =
+params.get("categoria");
+
+if(categoria){
+
+  cards.forEach(card => {
+
+    const categories =
+    (card.dataset.category || "")
+    .toLowerCase()
+    .split(" ");
+
+    if(
+      !categories.includes(
+        categoria.toLowerCase()
+      )
+    ){
+
+      card.style.display = "none";
+
+    }
+
+  });
+
+}
     /* CARRINHO */
 
     let cart = [];
