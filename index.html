@@ -5,12 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>O mundo vinil</title>
- <link rel="icon" href="logo.png.png" type="image/x-icon">
+
+  <link rel="icon" href="logo.png.png" type="image/x-icon">
+
   <style>
 
     @font-face{
-      font-family: 'Heaven';
-      src: url('./JustLikeHeaven_v2.otf') format('opentype');
+      font-family:'Heaven';
+      src:url('./JustLikeHeaven_v2.otf') format('opentype');
     }
 
     *{
@@ -23,7 +25,7 @@
       background:#050505;
       color:white;
       overflow-x:hidden;
-      font-family: arial;
+      font-family:arial;
     }
 
     header{
@@ -40,92 +42,7 @@
       background:rgba(0,0,0,0.45);
       border-bottom:1px solid rgba(255,255,255,0.08);
     }
-    /* CARRINHO */
 
-.cart-icon{
-
-  font-size:1.5rem;
-
-  cursor:pointer;
-
-  position:relative;
-}
-
-#cart-count{
-
-  background:#85fc60;
-
-  color:black;
-
-  font-size:0.8rem;
-
-  padding:3px 8px;
-
-  border-radius:50px;
-
-  position:absolute;
-
-  top:-10px;
-  right:-15px;
-}
-
-/* SIDEBAR */
-
-.cart-sidebar{
-
-  position:fixed;
-
-  top:0;
-  right:-400px;
-
-  width:350px;
-  height:100vh;
-
-  background:#111;
-
-  z-index:2000;
-
-  padding:30px;
-
-  transition:0.4s;
-
-  overflow-y:auto;
-
-  border-left:
-  1px solid rgba(255,255,255,0.08);
-}
-
-.cart-sidebar.active{
-  right:0;
-}
-
-.cart-sidebar h2{
-
-  margin-bottom:30px;
-
-  color:#b3b8ff;
-}
-
-.cart-item{
-
-  margin-bottom:20px;
-
-  padding-bottom:15px;
-
-  border-bottom:
-  1px solid rgba(255,255,255,0.08);
-}
-
-.cart-total{
-
-  margin-top:30px;
-
-  font-size:1.3rem;
-
-  font-weight:bold;
-
-  color:#85fc60;
-}
     .logo{
       font-family:'Heaven';
       font-size:2rem;
@@ -144,73 +61,19 @@
       font-size:0.95rem;
       transition:0.3s;
     }
-    /* BOTÃO MOBILE */
 
-.menu-mobile{
-
-  display:none;
-
-  background:none;
-
-  border:none;
-
-  color:white;
-
-  font-size:2rem;
-
-  cursor:pointer;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-  .menu-mobile{
-
-    display:block;
-
-    position:absolute;
-
-    right:7%;
-  }
-
-  nav{
-
-    position:absolute;
-
-    top:100%;
-
-    right:0;
-
-    width:100%;
-
-    background:#0a0a0a;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    gap:25px;
-
-    padding:30px 0;
-
-    display:none;
-  }
-
-  nav.active{
-    display:flex;
-  }
-
-  .logo{ 
-    height:45px;
-   }
-
-   }
     nav a:hover{
       color:#b3ffb7;
     }
 
-    /* HERO */
+    .menu-mobile{
+      display:none;
+      background:none;
+      border:none;
+      color:white;
+      font-size:2rem;
+      cursor:pointer;
+    }
 
     .hero{
       width:100%;
@@ -223,6 +86,7 @@
       background:
       linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.85)),
       url('https://i.pinimg.com/originals/b5/39/39/b539391edeaed377d62a3be4fc879c8b.gif');
+
       background-size:cover;
       background-position:center;
     }
@@ -237,7 +101,6 @@
       line-height:0.95;
       margin-bottom:30px;
       color:#b3b8ff;
-      
     }
 
     .hero p{
@@ -260,10 +123,7 @@
 
     .btn:hover{
       transform:scale(1.05);
-      background:#5560f7;
     }
-
-    /* SECTION */
 
     section{
       padding:100px 7%;
@@ -277,65 +137,58 @@
       text-align:center;
     }
 
-    /* CONTAINER */
+    .carousel-container{
+      position:relative;
+      width:100%;
+      overflow:hidden;
+    }
 
-.carousel-container{
-  position:relative;
-  width:100%;
-  overflow:hidden;
-}
+    .carousel{
+      display:flex;
+      gap:25px;
+      overflow-x:auto;
+      scroll-behavior:smooth;
+      padding-bottom:20px;
+    }
 
-/* CARROSSEL */
+    .carousel::-webkit-scrollbar{
+      display:none;
+    }
 
-.carousel{
-  display:flex;
-  gap:25px;
-  overflow-x:auto;
-  scroll-behavior:smooth;
-  padding-bottom:20px;
-}
+    .carousel-buttons{
+      position:relative;
+      display:flex;
+     align-items:center;
+    }
 
-.carousel::-webkit-scrollbar{
-  display:none;
-}
-/* LINK DO CARD */
-
-.card-link{
-  text-decoration:none;
-  color:inherit;
-}
-
-.card-link *{
-  color:white;
-}
-
-/* BOTÕES */
-
-.carousel-buttons{
-  position:relative;
-}
-
-/* BOTÕES */
-
-.carousel-buttons{
-  position:relative;
-}
-
-.arrow{
+    .arrow{
   position:absolute;
-  top:45%;
+
+  top:250px;
   transform:translateY(-50%);
+
   width:55px;
   height:55px;
+
   border:none;
   border-radius:50%;
+
   background:#5558f7e6;
   color:white;
+
   font-size:1.5rem;
+
   cursor:pointer;
-  z-index:10;
+
+  z-index:100;
+
   transition:0.3s;
+
   backdrop-filter:blur(10px);
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
 .arrow:hover{
@@ -352,22 +205,24 @@
 }
 
     .vinyl-card{
-   min-width:280px;
-   width:280px;
-   height:500px;
+      min-width:280px;
+      width:280px;
+      height:500px;
 
-   background:#111;
-   border-radius:24px;
-   overflow:hidden;
+      background:#111;
+      border-radius:24px;
+      overflow:hidden;
 
-   border:1px solid rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.08);
 
-   transition:0.4s;
-   flex-shrink:0;
+      transition:0.4s;
+      flex-shrink:0;
 
-   display:flex;
-   flex-direction:column;
-   }
+      display:flex;
+      flex-direction:column;
+
+      cursor:pointer;
+    }
 
     .vinyl-card:hover{
       transform:translateY(-10px);
@@ -382,12 +237,10 @@
     }
 
     .card-content{
-   padding:22px;
-
-   display:flex;
-   flex-direction:column;
-
-   flex:1;
+      padding:22px;
+      display:flex;
+      flex-direction:column;
+      flex:1;
     }
 
     .album{
@@ -399,20 +252,19 @@
     .artist{
       color:#b0b0b0;
       margin-bottom:18px;
-     }
+    }
 
     .price{
       color:#b3b8ff;
       font-size:1.2rem;
       font-weight:bold;
-     }
-
-    /* BANNER */
+    }
 
     .banner{
       margin-top:100px;
       background:
       linear-gradient(135deg,#1c1e87,#111827);
+
       border-radius:35px;
       padding:80px 50px;
       text-align:center;
@@ -432,8 +284,6 @@
       margin-bottom:35px;
     }
 
-    /* FOOTER */
-
     footer{
       padding:40px 7%;
       text-align:center;
@@ -441,12 +291,205 @@
       color:#777;
     }
 
-    /* RESPONSIVO */
+    /* POPUP */
+
+    .popup{
+
+      position:fixed;
+      inset:0;
+
+      background:rgba(0,0,0,0.55);
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      opacity:0;
+      pointer-events:none;
+
+      transition:0.3s;
+
+      z-index:5000;
+
+      padding:20px;
+    }
+
+    .popup.active{
+
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .popup-box{
+
+      width:100%;
+      max-width:420px;
+
+      background:#111;
+
+      border-radius:22px;
+
+      padding:22px;
+
+      position:relative;
+
+      border:1px solid rgba(255,255,255,0.08);
+
+      animation:popupAnim 0.3s ease;
+
+      box-shadow:0 0 35px rgba(0,0,0,0.5);
+    }
+
+    .popup-box img{
+
+      width:100%;
+      height:320px;
+
+      object-fit:cover;
+
+      border-radius:18px;
+
+      margin-bottom:18px;
+    }
+
+    .popup-box h2{
+
+      color:#b3b8ff;
+
+      margin-bottom:8px;
+
+      font-size:1.7rem;
+    }
+
+    .popup-box h3{
+
+      color:#bfbfbf;
+
+      margin-bottom:14px;
+
+      font-size:1rem;
+    }
+
+    .popup-box p{
+
+      line-height:1.7;
+
+      color:#d8d8d8;
+
+      margin-bottom:18px;
+
+      font-size:0.95rem;
+    }
+
+    .popup-price{
+
+      font-size:1.3rem;
+
+      font-weight:bold;
+
+      color:#85fc60;
+    }
+    
+    .popup-btn{
+
+  display:block;
+
+  width:100%;
+
+  margin-top:20px;
+
+  padding:14px;
+
+  border-radius:14px;
+
+  background:#5560f7;
+
+  color:white;
+
+  text-decoration:none;
+
+  text-align:center;
+
+  font-weight:bold;
+
+  transition:0.3s;
+}
+
+.popup-btn:hover{
+
+  background:#6b74ff;
+
+  transform:scale(1.02);
+}
+    .close-popup{
+
+      position:absolute;
+
+      top:12px;
+      right:12px;
+
+      width:38px;
+      height:38px;
+
+      border:none;
+
+      border-radius:50%;
+
+      background:rgba(0,0,0,0.65);
+
+      color:white;
+
+      font-size:1.1rem;
+
+      cursor:pointer;
+
+      transition:0.3s;
+    }
+
+    .close-popup:hover{
+
+      background:#5560f7;
+
+      transform:scale(1.08);
+    }
+
+    @keyframes popupAnim{
+
+      from{
+        transform:translateY(20px) scale(0.95);
+        opacity:0;
+      }
+
+      to{
+        transform:translateY(0) scale(1);
+        opacity:1;
+      }
+
+    }
 
     @media(max-width:768px){
 
+      .menu-mobile{
+        display:block;
+        position:absolute;
+        right:7%;
+      }
+
       nav{
+        position:absolute;
+        top:100%;
+        right:0;
+        width:100%;
+        background:#0a0a0a;
+        flex-direction:column;
+        align-items:center;
+        gap:25px;
+        padding:30px 0;
         display:none;
+      }
+
+      nav.active{
+        display:flex;
       }
 
       .hero h1{
@@ -475,21 +518,20 @@
   <header>
 
     <div class="logo">O mundo vinil</div>
-   <button class="menu-mobile" onclick="toggleMenu()">
-   ☰
-   </button>
+
+    <button class="menu-mobile" onclick="toggleMenu()">
+      ☰
+    </button>
+
     <nav id="navbar">
       <a href="index.html">Home</a>
       <a href="vinis.html">Vinis</a>
       <a href="colecao.html">Coleções</a>
       <a href="#">Novidades</a>
-      
     </nav>
-   
-  </header>
-   
 
-</div>
+  </header>
+
   <section class="hero">
 
     <div class="hero-content">
@@ -500,7 +542,9 @@
         sua loja de vinis :0
       </p>
 
-      <a href="vinis.html" class="btn">Comprar Agora</a>
+      <a href="vinis.html" class="btn">
+        Comprar Agora
+      </a>
 
     </div>
 
@@ -508,72 +552,170 @@
 
   <section>
 
-    <h2 class="section-title">Vinis em destaque</h2>
-   
-     <div class="carousel-container">
+    <h2 class="section-title">
+      Vinis em destaque
+    </h2>
 
-     <div class="carousel-buttons">
-     <button class="arrow left" onclick="scrollCarousel(-1)">❮</button>
-     <button class="arrow right" onclick="scrollCarousel(1)">❯</button>
-      <div class="carousel" id="vinylCarousel">
+    <div class="carousel-container">
 
-        <a class="card-link" href="vinis.html?categoria=pink">
-        <div class="vinyl-card">
-          <img src="https://store.oliviarodrigo.com/cdn/shop/files/02_girlsoinlove-exclusive_stickysweet_hotpinkvinyl.png?v=1775142228&width=1400">
-          <div class="card-content">
-            <div class="album">you seem pretty sad for a girl so in love</div>
-            <div class="artist">Olivia Rodrigo</div>
-            <div class="price">R$ 269</div>
-          </div>
-        </div>
-        </a>
-       <a class="card-link" href="vinis.html?categoria=picture">
-        <div class="vinyl-card">
-          <img src="https://store.oliviarodrigo.com/cdn/shop/files/1ST_0000s_0016_YLPSFGSIL-Picture-Disc---Disc-With-Sleeve.png?v=1779397650&width=1200">
-          <div class="card-content">
-            <div class="album">you seem pretty sad for a girl so in love <br> picture disc edition</div>
-            <div class="artist">Olivia Rodrigo</div>
-            <div class="price">R$ 189</div>
-            <div class="link"></div>
-          </div>
-        </div>
-        </a>
-        <a class="card-link" href="vinis.html?categoria=signed">
-        <div class="vinyl-card">
-          <img src="https://store.oliviarodrigo.com/cdn/shop/files/01_girlsoinlove-exclusive180-gramvinyl_signed.png?v=1775142201&width=1200">
-          <div class="card-content">
-            <div class="album">you seem pretty sad for a girl so in love<br>-signed</div>
-            <div class="artist">Olivia Rodrigo</div>
-            <div class="price">R$ 299</div>
-          </div>
-        </div>
-        </a> 
-       <a class="card-link" href="https://store.taylorswift.com/products/the-tortured-poets-department-vinyl-bonus-track-the-manuscript">
-        <div class="vinyl-card">
-          <img src="https://store.taylorswift.com/cdn/shop/files/oIrR9qXXeQRc3OuzsMq1YAqie8MY8mhq-2_1.png?v=1749674281&width=550">
-          <div class="card-content">
-            <div class="album">THE TORTURED POETS DEPARTMENT</div>
-            <div class="artist">Taylor Swift</div>
-            <div class="price">R$ 228</div>
-          </div>
-        </div>
-       </a>
-        
-        </div>
+      <div class="carousel-buttons">
 
+        <button class="arrow left" onclick="scrollCarousel(-1)">
+          ❮
+        </button>
+
+        <button class="arrow right" onclick="scrollCarousel(1)">
+          ❯
+        </button>
+
+        <div class="carousel" id="vinylCarousel">
+
+         
+
+  <!-- CARD 1 -->
+
+  <div class="vinyl-card"
+  onclick="openPopup(
+  'you seem pretty sad for a girl so in love',
+  'Olivia Rodrigo',
+  'https://store.oliviarodrigo.com/cdn/shop/files/02_girlsoinlove-exclusive_stickysweet_hotpinkvinyl.png?v=1775142228&width=1400',
+  'Vinil edição exclusiva pink edition da Olivia Rodrigo com capa especial e prensagem colorida.',
+  'R$ 269',
+  'vinis.html?categoria=pink'
+  )">
+
+    <img src="https://store.oliviarodrigo.com/cdn/shop/files/02_girlsoinlove-exclusive_stickysweet_hotpinkvinyl.png?v=1775142228&width=1400">
+
+    <div class="card-content">
+
+      <div class="album">
+        you seem pretty sad for a girl so in love
+      </div>
+
+      <div class="artist">
+        Olivia Rodrigo
+      </div>
+
+      <div class="price">
+        R$ 269
       </div>
 
     </div>
 
+  </div>
+
+  <!-- CARD 2 -->
+
+  <div class="vinyl-card"
+  onclick="openPopup(
+  'you seem pretty sad for a girl so in love - picture disc edition',
+  'Olivia Rodrigo',
+  'https://store.oliviarodrigo.com/cdn/shop/files/1ST_0000s_0016_YLPSFGSIL-Picture-Disc---Disc-With-Sleeve.png?v=1779397650&width=1200',
+  'Picture disc edition exclusiva com arte estampada diretamente no disco.',
+  'R$ 189'
+  )">
+
+    <img src="https://store.oliviarodrigo.com/cdn/shop/files/1ST_0000s_0016_YLPSFGSIL-Picture-Disc---Disc-With-Sleeve.png?v=1779397650&width=1200">
+
+    <div class="card-content">
+
+      <div class="album">
+        you seem pretty sad for a girl so in love
+        <br>
+        picture disc edition
+      </div>
+
+      <div class="artist">
+        Olivia Rodrigo
+      </div>
+
+      <div class="price">
+        R$ 189
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- CARD 3 -->
+
+  <div class="vinyl-card"
+  onclick="openPopup(
+  'you seem pretty sad for a girl so in love - signed',
+  'Olivia Rodrigo',
+  'https://store.oliviarodrigo.com/cdn/shop/files/01_girlsoinlove-exclusive180-gramvinyl_signed.png?v=1775142201&width=1200',
+  'Versão assinada limitada em vinil 180g para colecionadores.',
+  'R$ 299'
+  )">
+
+    <img src="https://store.oliviarodrigo.com/cdn/shop/files/01_girlsoinlove-exclusive180-gramvinyl_signed.png?v=1775142201&width=1200">
+
+    <div class="card-content">
+
+      <div class="album">
+        you seem pretty sad for a girl so in love
+        <br>
+        - signed
+      </div>
+
+      <div class="artist">
+        Olivia Rodrigo
+      </div>
+
+      <div class="price">
+        R$ 299
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- CARD 4 -->
+
+  <div class="vinyl-card"
+  onclick="openPopup(
+  'THE TORTURED POETS DEPARTMENT',
+  'Taylor Swift',
+  'https://store.taylorswift.com/cdn/shop/files/oIrR9qXXeQRc3OuzsMq1YAqie8MY8mhq-2_1.png?v=1749674281&width=550',
+  'Edição especial do álbum THE TORTURED POETS DEPARTMENT com faixa bônus.',
+  'R$ 228'
+  )">
+
+    <img src="https://store.taylorswift.com/cdn/shop/files/oIrR9qXXeQRc3OuzsMq1YAqie8MY8mhq-2_1.png?v=1749674281&width=550">
+
+    <div class="card-content">
+
+      <div class="album">
+        THE TORTURED POETS DEPARTMENT
+      </div>
+
+      <div class="artist">
+        Taylor Swift
+      </div>
+
+      <div class="price">
+        R$ 228
+      </div>
+
+    </div>
+
+  </div>
+ </div>
+</div>
+
     <div class="banner">
 
-      <h2>Creator's Pick</h2>
+      <h2>
+        Creator's Pick
+      </h2>
 
       <p>
         Veja aqui as escolhas dos melhores discos pelos criadores do site.
       </p>
 
-      <a href="colecao.html" class="btn">Ver coleção</a>
+      <a href="colecao.html" class="btn">
+        Ver coleção
+      </a>
 
     </div>
 
@@ -582,75 +724,135 @@
   <footer>
     O mundo vinil, 2026&copy;
   </footer>
-<script>
 
-  const carousel = document.getElementById("vinylCarousel");
+  <!-- POPUP -->
 
-  const scrollAmount = 320;
+  <div class="popup" id="popup">
 
-  function scrollCarousel(direction){
+    <div class="popup-box">
 
-    const maxScrollLeft =
+      <button class="close-popup" onclick="closePopup()">
+        ✕
+      </button>
+
+      <img id="popup-img" src="" alt="Album">
+
+      <h2 id="popup-title"></h2>
+
+      <h3 id="popup-artist"></h3>
+
+      <p id="popup-description"></p>
+
+      <div class="popup-price" id="popup-price"></div>
+      <a href="vinis.html" class="popup-btn" id="popup-link">
+      Ver na loja
+      </a>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    const carousel =
+    document.getElementById("vinylCarousel");
+
+    const scrollAmount = 320;
+
+    function scrollCarousel(direction){
+
+      const maxScrollLeft =
       carousel.scrollWidth - carousel.clientWidth;
 
-    // DIREITA
-    if(direction === 1){
+      if(direction === 1){
 
-      // se chegou no final → volta pro começo
-      if(carousel.scrollLeft >= maxScrollLeft -4){
+        if(carousel.scrollLeft >= maxScrollLeft - 4){
 
-        carousel.scrollTo({
-          left: 0,
-          behavior: "smooth"
-        });
+          carousel.scrollTo({
+            left:0,
+            behavior:"smooth"
+          });
+
+        } else {
+
+          carousel.scrollBy({
+            left:scrollAmount,
+            behavior:"smooth"
+          });
+
+        }
 
       } else {
 
-        carousel.scrollBy({
-          left: scrollAmount,
-          behavior: "smooth"
-        });
+        if(carousel.scrollLeft <= 4){
+
+          carousel.scrollTo({
+            left:maxScrollLeft,
+            behavior:"smooth"
+          });
+
+        } else {
+
+          carousel.scrollBy({
+            left:-scrollAmount,
+            behavior:"smooth"
+          });
+
+        }
 
       }
 
     }
 
-    // Direita
-    else{
+    function toggleMenu(){
 
-      // se estiver no começo → vai pro final
-      if(carousel.scrollLeft <= 4){
+      const nav =
+      document.getElementById("navbar");
 
-        carousel.scrollTo({
-          left: maxScrollLeft,
-          behavior: "smooth"
-        });
-
-      } else {
-
-        carousel.scrollBy({
-          left: -scrollAmount,
-          behavior: "smooth"
-        });
-
-      }
+      nav.classList.toggle("active");
 
     }
 
-  }
+    function openPopup(
+      title,
+      artist,
+      image,
+      description,
+      price,
+      link 
+      
+     ){
+      
+      document.getElementById("popup")
+      .classList.add("active");
 
+      document.getElementById("popup-title")
+      .innerText = title;
 
+      document.getElementById("popup-artist")
+      .innerText = artist;
 
+      document.getElementById("popup-img")
+      .src = image;
 
- function toggleMenu(){
+      document.getElementById("popup-description")
+      .innerText = description;
 
-  const nav =
-  document.getElementById("navbar");
+      document.getElementById("popup-price")
+      .innerText = price;
+     
+      document.getElementById("popup-link")
+      .href = link;
+    }
 
-  nav.classList.toggle("active");
+    function closePopup(){
 
-}
+      document.getElementById("popup")
+      .classList.remove("active");
 
-</script>
+    }
+
+  </script>
+
 </body>
 </html>
