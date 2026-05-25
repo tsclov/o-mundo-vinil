@@ -539,9 +539,154 @@
 }
 
 .popup-content button:hover{
-
   background:#6f79ff;
 }
+   @keyframes popupAnim{
+
+      from{
+        transform:translateY(20px) scale(0.95);
+        opacity:0;
+      }
+
+      to{
+        transform:translateY(0) scale(1);
+        opacity:1;
+      }
+
+    }
+
+    .login-popup{
+
+      position:fixed;
+      inset:0;
+
+      background:rgba(0,0,0,0.6);
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      opacity:0;
+      pointer-events:none;
+
+      transition:0.3s;
+
+      z-index:6000;
+    }
+
+    .login-popup.active{
+
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .login-box{
+
+      width:90%;
+      max-width:400px;
+
+      background:#111;
+
+      padding:30px;
+
+      border-radius:25px;
+
+      border:1px solid rgba(255,255,255,0.08);
+
+      position:relative;
+    }
+
+    .login-box h2{
+
+      margin-bottom:20px;
+
+      color:#b3b8ff;
+    }
+
+    .login-box input{
+
+      width:100%;
+
+      padding:15px;
+
+      border:none;
+
+      border-radius:14px;
+
+      background:#1c1c1c;
+
+      color:white;
+
+      margin-bottom:20px;
+
+      outline:none;
+    }
+
+    .login-btn{
+
+      width:100%;
+
+      padding:15px;
+
+      border:none;
+
+      border-radius:14px;
+
+      background:#5560f7;
+
+      color:white;
+
+      font-weight:bold;
+
+      cursor:pointer;
+    }
+
+    .close-login{
+
+      position:absolute;
+
+      top:12px;
+      right:12px;
+
+      width:36px;
+      height:36px;
+
+      border:none;
+
+      border-radius:50%;
+
+      background:#222;
+
+      color:white;
+
+      cursor:pointer;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      font-size:1.6rem;
+
+      font-weight:300;
+
+      line-height:0;
+
+      padding:0;
+
+      overflow:hidden;
+
+      transition:0.3s;
+    }
+
+    .close-login:hover{
+
+      background:#5560f7;
+
+      transform:scale(1.08);
+    }
+
+      
+
   /* TOPO DO CARRINHO */
 
 .cart-header{
@@ -923,9 +1068,39 @@
     <button onclick="closePopup()">
       Fechar
     </button>
+    </div>
+    </div>
+
+<div class="login-popup" id="loginPopup">
+
+  <div class="login-box">
+
+    <button class="close-login" onclick="closeLogin()">
+      &times;
+    </button>
+
+    <h2>
+      Entrar
+    </h2>
+
+    <input
+      type="text"
+      id="username"
+      placeholder="Seu nome"
+    >
+
+    <input
+      type="password"
+      id="password"
+      placeholder="Sua senha"
+    >
+
+    <button class="login-btn" onclick="login()">
+      Continuar
+    </button>
 
   </div>
-
+</div>
 </div>
   <script>
 
