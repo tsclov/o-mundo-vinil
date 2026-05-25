@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Coleções</title>
-
+<link rel="icon" href="M V.png" type="image/x-icon">
 <style>
 
 
@@ -476,58 +476,26 @@ function toggleMenu(){
   document.getElementById("navbar").classList.toggle("active");
 }
 
+/* LOGIN */
 function openLogin(){
+  document.getElementById("loginPopup").classList.add("active");
+}
 
-    document
-    .getElementById("loginPopup")
-    .classList.add("active");
+function closeLogin(){
+  document.getElementById("loginPopup").classList.remove("active");
+}
 
-  }
+function login(){
 
-  function closeLogin(){
+  const username = document.getElementById("username").value;
 
-    document
-    .getElementById("loginPopup")
-    .classList.remove("active");
+  if(username.trim() === "") return;
 
-  }
+  localStorage.setItem("vinylUser", username);
 
-  function login(){
+  closeLogin();
+}
 
-    const username =
-    document.getElementById("username").value;
-
-    if(username.trim() === "") return;
-
-    localStorage.setItem("vinylUser", username);
-
-    updateLoginButton();
-
-    closeLogin();
-
-  }
-
-  function updateLoginButton(){
-
-    const user =
-    localStorage.getItem("vinylUser");
-
-    const loginBtn =
-    document.getElementById("login-btn");
-
-    if(user){
-
-      loginBtn.innerText = user;
-
-    } else {
-
-      loginBtn.innerText = "Login";
-
-    }
-
-  }
-
-  updateLoginButton();
 </script>
 
 </body>
