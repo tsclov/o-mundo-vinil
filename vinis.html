@@ -1433,25 +1433,25 @@ function openLogin(){
 
   function login(){
 
-    const username =
-    document.getElementById("username").value;
+  const username =
+  document.getElementById("username").value.trim();
 
-    if(username.trim() === "") return;
+  if(username === "") return;
 
-    localStorage.setItem("vinylUser", username);
+  localStorage.setItem("vinylUser", username);
 
-    updateLoginButton();
+  updateLoginButton();
 
-    closeLogin();
+  openLogin();
 
-  }
+}
   function logout(){
 
   localStorage.removeItem("vinylUser");
 
   updateLoginButton();
 
-  closeLogin();
+  openLogin();
 
 }
   function updateLoginButton(){
