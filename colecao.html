@@ -76,21 +76,7 @@ header{
       color:#b3ffb7;
     }
 
-    .header-login-btn{
-      padding:14px 30px;
-      border:none;
-      border-radius:50px;
-      background:#5560f7;
-      color:white;
-      font-weight:bold;
-      cursor:pointer;
-      transition:0.3s;
-      font-size:0.95rem;
-    }
-
-    .header-login-btn:hover{
-      transform:scale(1.05);
-    }
+    
 /* =========================
    MENU MOBILE
 ========================= */
@@ -193,135 +179,8 @@ header{
 .right-arrow{ right:20px; }
 
 
-.login-popup{
 
-      position:fixed;
-      inset:0;
-
-      background:rgba(0,0,0,0.6);
-
-      display:flex;
-      justify-content:center;
-      align-items:center;
-
-      opacity:0;
-      pointer-events:none;
-
-      transition:0.3s;
-
-      z-index:6000;
-    }
-
-    .login-popup.active{
-
-      opacity:1;
-      pointer-events:auto;
-    }
-
-    .login-box{
-
-      width:90%;
-      max-width:400px;
-
-      background:#111;
-
-      padding:30px;
-
-      border-radius:25px;
-
-      border:1px solid rgba(255,255,255,0.08);
-
-      position:relative;
-    }
-
-    .login-box h2{
-
-      margin-bottom:20px;
-
-      color:#b3b8ff;
-    }
-
-    .login-box input{
-
-      width:100%;
-
-      padding:15px;
-
-      border:none;
-
-      border-radius:14px;
-
-      background:#1c1c1c;
-
-      color:white;
-
-      margin-bottom:20px;
-
-      outline:none;
-    }
-
-    .login-btn{
-
-      width:100%;
-
-      padding:15px;
-
-      border:none;
-
-      border-radius:14px;
-
-      background:#5560f7;
-
-      color:white;
-
-      font-weight:bold;
-
-      cursor:pointer;
-    }
-
-    .close-login{
-
-      position:absolute;
-
-      top:12px;
-      right:12px;
-
-      width:36px;
-      height:36px;
-
-      border:none;
-
-      border-radius:50%;
-
-      background:#222;
-
-      color:white;
-
-      cursor:pointer;
-
-      display:flex;
-      align-items:center;
-      justify-content:center;
-
-      font-size:1.6rem;
-
-      font-weight:300;
-
-      line-height:0;
-
-      padding:0;
-
-      overflow:hidden;
-
-      transition:0.3s;
-    }
-
-    .close-login:hover{
-
-      background:#5560f7;
-
-      transform:scale(1.08);
-    }
+    
 
 
 /* =========================
@@ -352,9 +211,6 @@ header{
         display:flex;
       }
 
-      .header-login-btn{
-        display:none;
-      }
 
       .hero h1{
         font-size:3.5rem;
@@ -389,10 +245,7 @@ header{
     <a href="colecao.html">Coleções</a>
     <a href="#" >Contato</a>
   </nav>
-  <button class="header-login-btn" id="login-btn" onclick="openLogin()">
-      Login
-    </button>
-
+  
 </header>
 
 <!-- COLEÇÕES -->
@@ -437,20 +290,7 @@ header{
   </div>
 </section>
 
-<!-- LOGIN -->
-<div class="login-popup" id="loginPopup">
-  <div class="login-box">
-
-    <button class="close-login" onclick="closeLogin()">×</button>
-
-    <h2>Entrar</h2>
-
-    <input type="text" id="username" placeholder="Seu nome">
-
-    <button onclick="login()">Continuar</button>
-
-  </div>
-</div>
+<
 
 <script>
 
@@ -476,25 +316,7 @@ function toggleMenu(){
   document.getElementById("navbar").classList.toggle("active");
 }
 
-/* LOGIN */
-function openLogin(){
-  document.getElementById("loginPopup").classList.add("active");
-}
 
-function closeLogin(){
-  document.getElementById("loginPopup").classList.remove("active");
-}
-
-function login(){
-
-  const username = document.getElementById("username").value;
-
-  if(username.trim() === "") return;
-
-  localStorage.setItem("vinylUser", username);
-
-  closeLogin();
-}
 
 </script>
 
