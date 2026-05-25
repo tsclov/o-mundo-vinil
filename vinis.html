@@ -1118,6 +1118,7 @@
 
     <p>
       Obrigado por comprar conosco!
+     <br> o ID do seu pedido foi encaminhado para o seu email.
     </p>
 
     <button onclick="closePopup()">
@@ -1148,6 +1149,13 @@
       type="password"
       id="password"
       placeholder="Sua senha"
+    > 
+
+    <input
+      type="email"
+      id="email"
+      placeholder="Seu endereço email"
+      required
     >
 
     <button class="login-btn" onclick="login()">
@@ -1431,6 +1439,13 @@ function openLogin(){
         placeholder="Sua senha"
       >
 
+       <input
+       type="email"
+       id="email"
+       placeholder="Seu endereço email"
+       required
+       > 
+
       <button
       class="login-btn"
       onclick="login()">
@@ -1462,7 +1477,21 @@ function openLogin(){
   const username =
   document.getElementById("username").value.trim();
 
-  if(username === "") return;
+  const email =
+  document.getElementById("email").value.trim();
+
+  const emailInput =
+  document.getElementById("email");
+
+  if(username === ""){
+    alert("Digite seu nome");
+    return;
+  }
+
+  if(!emailInput.checkValidity()){
+    emailInput.reportValidity();
+    return;
+  }
 
   localStorage.setItem("vinylUser", username);
 

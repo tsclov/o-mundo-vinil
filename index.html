@@ -1133,7 +1133,13 @@
         id="password"
         placeholder="Sua senha"
       >
-
+     
+      <input
+      type="email"
+      id="email"
+      placeholder="Seu endereço email"
+      required
+      >
       <button
       class="login-btn"
       onclick="login()">
@@ -1160,18 +1166,32 @@
 
   function login(){
 
-    const username =
-    document.getElementById("username").value;
+  const username =
+  document.getElementById("username").value.trim();
 
-    if(username.trim() === "") return;
+  const email =
+  document.getElementById("email").value.trim();
 
-    localStorage.setItem("vinylUser", username);
+  const emailInput =
+  document.getElementById("email");
 
-    updateLoginButton();
-
-    closeLogin();
-
+  if(username === ""){
+    alert("Digite seu nome");
+    return;
   }
+
+  if(!emailInput.checkValidity()){
+    emailInput.reportValidity();
+    return;
+  }
+
+  localStorage.setItem("vinylUser", username);
+
+  updateLoginButton();
+
+  openLogin();
+
+}
   function logout(){
 
   localStorage.removeItem("vinylUser");
