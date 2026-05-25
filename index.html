@@ -6,7 +6,7 @@
 
   <title>O mundo vinil</title>
 
-  <link rel="icon" href="logo.png.png" type="image/x-icon">
+  <link rel="icon" href="M V.png" type="image/x-icon">
 
   <style>
 
@@ -572,7 +572,33 @@
 
       cursor:pointer;
     }
+    .logout-btn{
 
+  width:100%;
+
+  padding:15px;
+
+  border:none;
+
+  border-radius:14px;
+
+  background:#ff4d4d;
+
+  color:white;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.logout-btn:hover{
+
+  background:#ff6666;
+
+  transform:scale(1.02);
+}
     .close-login{
 
       position:absolute;
@@ -620,10 +646,10 @@
     @media(max-width:768px){
 
       .menu-mobile{
-        display:block;
-        position:absolute;
-        right:7%;
-      }
+     display:block;
+      position:absolute;
+      right:7%;
+     }
 
       nav{
         position:absolute;
@@ -643,8 +669,27 @@
       }
 
       .header-login-btn{
-        display:none;
-      }
+
+  padding:10px 18px;
+
+  border:none;
+
+  border-radius:50px;
+
+  background:#5560f7;
+
+  color:white;
+
+  font-weight:bold;
+
+  font-size:0.85rem;
+
+  display:block;
+
+  position:absolute;
+
+  right:70px;
+}
 
       .hero h1{
         font-size:3.5rem;
@@ -926,29 +971,12 @@
       &times;
     </button>
 
-    <h2>
-      Entrar
-    </h2>
-
-    <input
-      type="text"
-      id="username"
-      placeholder="Seu nome"
-    >
-
-    <input
-      type="password"
-      id="password"
-      placeholder="Sua senha"
-    >
-
-    <button class="login-btn" onclick="login()">
-      Continuar
-    </button>
+    <div id="login-content"></div>
 
   </div>
 
 </div>
+
 
 <script>
 
@@ -1052,11 +1080,75 @@
 
   function openLogin(){
 
-    document
-    .getElementById("loginPopup")
-    .classList.add("active");
+  const popup =
+  document.getElementById("loginPopup");
+
+  const content =
+  document.getElementById("login-content");
+
+  const user =
+  localStorage.getItem("vinylUser");
+
+  if(user){
+
+    content.innerHTML = `
+
+      <h2>Conta conectada</h2>
+
+      <p style="
+        color:#d0d0d0;
+        margin-bottom:25px;
+        line-height:1.6;
+      ">
+        Você está logado como
+        <strong>${user}</strong>
+      </p>
+
+      <button
+      class="logout-btn"
+      onclick="logout()">
+
+        Deslogar Conta
+
+      </button>
+
+    `;
+
+  } else {
+
+    content.innerHTML = `
+
+      <h2>
+        Entrar
+      </h2>
+
+      <input
+        type="text"
+        id="username"
+        placeholder="Seu nome"
+      >
+
+      <input
+        type="password"
+        id="password"
+        placeholder="Sua senha"
+      >
+
+      <button
+      class="login-btn"
+      onclick="login()">
+
+        Continuar
+
+      </button>
+
+    `;
 
   }
+
+  popup.classList.add("active");
+
+}
 
   function closeLogin(){
 
@@ -1080,7 +1172,15 @@
     closeLogin();
 
   }
+  function logout(){
 
+  localStorage.removeItem("vinylUser");
+
+  updateLoginButton();
+
+  closeLogin();
+
+}
   function updateLoginButton(){
 
     const user =

@@ -640,7 +640,34 @@
 
       cursor:pointer;
     }
+    
+    .logout-btn{
 
+  width:100%;
+
+  padding:15px;
+
+  border:none;
+
+  border-radius:14px;
+
+  background:#ff4d4d;
+
+  color:white;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.logout-btn:hover{
+
+  background:#ff6666;
+
+  transform:scale(1.02);
+}
     .close-login{
 
       position:absolute;
@@ -825,14 +852,16 @@
     <a href="#">Novidades</a>
 
   </nav>
-
+  
   <!-- DIREITA -->
   <div class="header-actions">
 
-    <!-- LOGIN -->
+   <!-- LOGIN -->
+
     <button class="header-login-btn" id="login-btn" onclick="openLogin()">
       Login
     </button>
+
 
     <!-- CARRINHO -->
     <div class="cart-icon" onclick="toggleCart()">
@@ -1101,7 +1130,7 @@
 
   </div>
 </div>
-</div>
+
   <script>
 
     /* MENU MOBILE */
@@ -1317,11 +1346,82 @@ function closePopup(){
 
 function openLogin(){
 
-    document
-    .getElementById("loginPopup")
-    .classList.add("active");
+  const popup =
+  document.getElementById("loginPopup");
+
+  const user =
+  localStorage.getItem("vinylUser");
+
+  if(user){
+
+    document.querySelector(".login-box").innerHTML = `
+
+      <button class="close-login" onclick="closeLogin()">
+        &times;
+      </button>
+
+      <h2>Conta conectada</h2>
+
+      <p style="
+        color:#d0d0d0;
+        margin-bottom:25px;
+        line-height:1.6;
+      ">
+        Você está logado como
+        <strong>${user}</strong>
+      </p>
+
+      <button
+      class="logout-btn"
+      onclick="logout()">
+
+        Deslogar Conta
+
+      </button>
+
+    `;
+
+  } else {
+
+    document.querySelector(".login-box").innerHTML = `
+
+      <button class="close-login" onclick="closeLogin()">
+        &times;
+      </button>
+
+      <h2>
+        Entrar
+      </h2>
+
+      <input
+        type="text"
+        id="username"
+        placeholder="Seu nome"
+      >
+
+      <input
+        type="password"
+        id="password"
+        placeholder="Sua senha"
+      >
+
+      <button
+      class="login-btn"
+      onclick="login()">
+
+        Continuar
+
+      </button>
+
+    `;
 
   }
+
+  popup.classList.add("active");
+
+}
+
+ 
 
   function closeLogin(){
 
@@ -1345,7 +1445,15 @@ function openLogin(){
     closeLogin();
 
   }
+  function logout(){
 
+  localStorage.removeItem("vinylUser");
+
+  updateLoginButton();
+
+  closeLogin();
+
+}
   function updateLoginButton(){
 
     const user =
