@@ -875,7 +875,7 @@
 
     <a href="colecao.html">Coleções</a>
 
-    <a href="#">Novidades</a>
+    <a href="suporte.html">Suporte</a>
 
   </nav>
   
@@ -1142,7 +1142,7 @@
     <input
       type="text"
       id="username"
-      placeholder="Seu nome"
+      placeholder="Seu username"
     >
 
     <input
@@ -1349,6 +1349,19 @@ if(categoria){
     }
    function checkout(){
 
+  const user =
+  localStorage.getItem("vinylUser");
+
+  if(!user){
+
+    alert("Você precisa estar logado para finalizar a compra.");
+
+    openLogin();
+
+    return;
+
+  }
+
   if(cart.length === 0){
 
     alert("Seu carrinho está vazio!");
@@ -1430,7 +1443,7 @@ function openLogin(){
       <input
         type="text"
         id="username"
-        placeholder="Seu nome"
+        placeholder="Seu username"
       >
 
       <input
@@ -1484,7 +1497,7 @@ function openLogin(){
   document.getElementById("email");
 
   if(username === ""){
-    alert("Digite seu nome");
+    alert("Digite seu usuario");
     return;
   }
 

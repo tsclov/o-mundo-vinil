@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Suporte ao Cliente</title>
+<link rel="icon" href="M V.png" type="x-icon">
+  <style>
+
+    @font-face{
+      font-family:'Heaven';
+      src:url('./JustLikeHeaven_v2.otf') format('opentype');
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+
+  background:
+  linear-gradient(
+    rgba(0,0,0,0.72),
+    rgba(0,0,0,0.72)
+  ),
+
+  url("https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUycjdxOHRjdm1saWNhbnVvMGtpa3ZwcGFyMW5vaGd3bGJyMXAxeTB5diZlcD12MV9naWZzX3NlYXJjaCZjdD1n/aGeePr7nv6ra8/giphy.gif");
+
+  background-size:cover;
+
+  background-position:center;
+
+  background-repeat:no-repeat;
+
+  background-attachment:fixed;
+
+  color:white;
+
+  font-family:Arial, Helvetica, sans-serif;
+
+  overflow-x:hidden;
+}
+
+    a{
+      text-decoration:none;
+      color:white;
+    }
+
+    /* HEADER */
+
+    header{
+      width:100%;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:999;
+
+      padding:24px 7%;
+
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+
+      backdrop-filter:blur(14px);
+
+      background:rgba(0,0,0,0.45);
+
+      border-bottom:
+      1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo{
+      font-family:'Heaven';
+      font-size:2rem;
+      letter-spacing:3px;
+      color:#b3b8ff;
+    }
+
+    nav{
+      display:flex;
+      gap:35px;
+    }
+
+    nav a{
+      transition:0.3s;
+    }
+
+    nav a:hover{
+      color:#b3ffb7;
+    }
+
+    .header-actions{
+      display:flex;
+      align-items:center;
+      gap:20px;
+    }
+
+    .menu-mobile{
+      display:none;
+      background:none;
+      border:none;
+      color:white;
+      font-size:2rem;
+      cursor:pointer;
+    }
+
+    .header-login-btn{
+      padding:12px 26px;
+      border:none;
+      border-radius:50px;
+      background:#5560f7;
+      color:white;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .header-login-btn:hover{
+      background:#6b74ff;
+      transform:scale(1.05);
+    }
+
+    /* CONTEÚDO */
+
+    .support-section{
+      width:100%;
+      min-height:100vh;
+
+      padding:
+      160px 7% 80px;
+
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+    }
+
+    .support-box{
+
+  width:100%;
+  max-width:700px;
+
+  background:rgba(17,17,17,0.72);
+
+  backdrop-filter:blur(12px);
+
+  -webkit-backdrop-filter:blur(12px);
+
+  padding:40px;
+
+  border-radius:28px;
+
+  border:
+  1px solid rgba(255,255,255,0.08);
+}
+
+    .support-box h1{
+      font-family:'Heaven';
+      font-size:3rem;
+      color:#b3b8ff;
+
+      margin-bottom:15px;
+    }
+
+    .support-box p{
+      color:#cfcfcf;
+      margin-bottom:35px;
+      line-height:1.6;
+    }
+
+    .support-form{
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
+
+    .support-form input,
+    .support-form select,
+    .support-form textarea{
+
+      width:100%;
+
+      background:#1b1b1b;
+
+      border:none;
+
+      border-radius:16px;
+
+      padding:16px;
+
+      color:white;
+
+      outline:none;
+
+      font-size:1rem;
+    }
+
+    .support-form textarea{
+      resize:none;
+      min-height:150px;
+    }
+
+    .support-form button{
+
+      background:#5560f7;
+
+      color:white;
+
+      border:none;
+
+      padding:16px;
+
+      border-radius:16px;
+
+      font-size:1rem;
+
+      font-weight:bold;
+
+      cursor:pointer;
+
+      transition:0.3s;
+    }
+
+    .support-form button:hover{
+      background:#6b74ff;
+      transform:scale(1.02);
+    }
+
+    /* POPUP */
+
+    .popup{
+
+  position:fixed;
+  inset:0;
+
+  background:rgba(0,0,0,0.75);
+
+  backdrop-filter:blur(8px);
+
+  -webkit-backdrop-filter:blur(8px);
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  opacity:0;
+  pointer-events:none;
+
+  transition:0.3s;
+}
+
+    .popup.active{
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .popup-content{
+
+      width:90%;
+      max-width:400px;
+
+      background:#111;
+
+      padding:35px;
+
+      border-radius:24px;
+
+      text-align:center;
+
+      border:
+      1px solid rgba(255,255,255,0.08);
+    }
+
+    .popup-content h2{
+      color:#b3b8ff;
+      margin-bottom:15px;
+    }
+
+    .popup-content p{
+      color:#d0d0d0;
+      margin-bottom:25px;
+      line-height:1.5;
+    }
+
+    .popup-content button{
+
+      background:#5560f7;
+
+      border:none;
+
+      color:white;
+
+      padding:14px 24px;
+
+      border-radius:14px;
+
+      cursor:pointer;
+    }
+
+    /* LOGIN POPUP */
+
+    .login-popup{
+
+      position:fixed;
+      inset:0;
+
+      background:rgba(0,0,0,0.6);
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      opacity:0;
+      pointer-events:none;
+
+      transition:0.3s;
+
+      z-index:6000;
+    }
+
+    .login-popup.active{
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .login-box{
+
+      width:90%;
+      max-width:400px;
+
+      background:#111;
+
+      padding:30px;
+
+      border-radius:25px;
+
+      border:
+      1px solid rgba(255,255,255,0.08);
+
+      position:relative;
+    }
+
+    .login-box h2{
+      margin-bottom:20px;
+      color:#b3b8ff;
+    }
+
+    .login-box input{
+
+      width:100%;
+
+      padding:15px;
+
+      border:none;
+
+      border-radius:14px;
+
+      background:#1c1c1c;
+
+      color:white;
+
+      margin-bottom:20px;
+
+      outline:none;
+    }
+
+    .login-btn,
+    .logout-btn{
+
+      width:100%;
+
+      padding:15px;
+
+      border:none;
+
+      border-radius:14px;
+
+      color:white;
+
+      font-weight:bold;
+
+      cursor:pointer;
+    }
+
+    .login-btn{
+      background:#5560f7;
+    }
+
+    .logout-btn{
+      background:#ff4d4d;
+    }
+
+    .close-login{
+
+      position:absolute;
+
+      top:12px;
+      right:12px;
+
+      width:36px;
+      height:36px;
+
+      border:none;
+
+      border-radius:50%;
+
+      background:#222;
+
+      color:white;
+
+      cursor:pointer;
+
+      font-size:1.5rem;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:768px){
+
+      .menu-mobile{
+        display:block;
+      }
+
+      nav{
+
+        position:absolute;
+
+        top:100%;
+        right:0;
+
+        width:100%;
+
+        background:#0a0a0a;
+
+        flex-direction:column;
+
+        align-items:center;
+
+        gap:25px;
+
+        padding:30px 0;
+
+        display:none;
+      }
+
+      nav.active{
+        display:flex;
+      }
+
+      .support-box{
+        padding:30px 22px;
+      }
+
+      .support-box h1{
+        font-size:2.2rem;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="logo">
+      O mundo vinil
+    </div>
+
+    <button class="menu-mobile" onclick="toggleMenu()">
+      ☰
+    </button>
+
+    <nav id="navbar">
+
+      <a href="index.html">Home</a>
+
+      <a href="vinis.html">Vinis</a>
+
+      <a href="colecao.html">Coleções</a>
+
+      <a href="suporte.html">Suporte</a>
+
+    </nav>
+
+    <div class="header-actions">
+
+      <button
+      class="header-login-btn"
+      id="login-btn"
+      onclick="openLogin()">
+
+        Login
+
+      </button>
+
+    </div>
+
+  </header>
+
+  <!-- SUPORTE -->
+
+  <section class="support-section">
+
+    <div class="support-box">
+
+      <h1>Suporte</h1>
+
+      <p>
+        Precisa de ajuda com seu pedido?
+        Envie um ticket e nossa equipe responderá em breve.
+      </p>
+
+      <form
+      class="support-form"
+      onsubmit="sendTicket(event)">
+
+        <input
+        type="text"
+        id="support-name"
+        placeholder="Seu nome"
+        required>
+
+        <input
+        type="text"
+        id="order-id"
+        placeholder="ID do pedido"
+        required>
+
+        <select
+        id="ticket-category"
+        required>
+
+          <option value="">
+            Selecione a categoria
+          </option>
+
+          <option value="Reembolso">
+            Reembolso
+          </option>
+
+          <option value="Cancelar pedido">
+            Cancelar pedido
+          </option>
+
+          <option value="Outros">
+            Outros
+          </option>
+
+        </select>
+
+        <textarea
+        id="ticket-message"
+        placeholder="Descreva o problema..."
+        required></textarea>
+
+        <button type="submit">
+          Enviar Ticket
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+  <!-- POPUP -->
+
+  <div class="popup" id="popup">
+
+    <div class="popup-content">
+
+      <h2>Ticket enviado 💜</h2>
+
+      <p>
+        Sua solicitação foi enviada
+        para nossa equipe de suporte.
+      </p>
+
+      <button onclick="closePopup()">
+        Fechar
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- LOGIN -->
+
+  <div class="login-popup" id="loginPopup">
+
+    <div class="login-box">
+
+      <button
+      class="close-login"
+      onclick="closeLogin()">
+
+        &times;
+
+      </button>
+
+      <h2>
+        Entrar
+      </h2>
+
+      <input
+      type="text"
+      id="username"
+      placeholder="Seu username">
+
+      <input
+      type="password"
+      id="password"
+      placeholder="Sua senha">
+
+      <button
+      class="login-btn"
+      onclick="login()">
+
+        Continuar
+
+      </button>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    /* MENU MOBILE */
+
+    function toggleMenu(){
+
+      const nav =
+      document.getElementById("navbar");
+
+      nav.classList.toggle("active");
+
+    }
+
+    /* LOGIN */
+
+    function openLogin(){
+
+      const popup =
+      document.getElementById("loginPopup");
+
+      const user =
+      localStorage.getItem("vinylUser");
+
+      if(user){
+
+        document.querySelector(".login-box").innerHTML = `
+
+          <button
+          class="close-login"
+          onclick="closeLogin()">
+
+            &times;
+
+          </button>
+
+          <h2>Conta conectada</h2>
+
+          <p style="
+            color:#d0d0d0;
+            margin-bottom:25px;
+            line-height:1.6;
+          ">
+            Você está logado como
+            <strong>${user}</strong>
+          </p>
+
+          <button
+          class="logout-btn"
+          onclick="logout()">
+
+            Deslogar Conta
+
+          </button>
+
+        `;
+
+      } else {
+
+        document.querySelector(".login-box").innerHTML = `
+
+          <button
+          class="close-login"
+          onclick="closeLogin()">
+
+            &times;
+
+          </button>
+
+          <h2>
+            Entrar
+          </h2>
+
+          <input
+          type="text"
+          id="username"
+          placeholder="Seu usuario">
+
+          <input
+          type="password"
+          id="password"
+          placeholder="Sua senha">
+         
+          <input
+           type="email"
+           id="email"
+           placeholder="Seu endereço email"
+            required
+         >
+          <button
+          class="login-btn"
+          onclick="login()">
+
+            Continuar
+
+          </button>
+
+        `;
+
+      }
+
+      popup.classList.add("active");
+
+    }
+
+    function closeLogin(){
+
+      document
+      .getElementById("loginPopup")
+      .classList.remove("active");
+
+    }
+
+    function login(){
+
+  const username =
+  document.getElementById("username").value.trim();
+
+  const email =
+  document.getElementById("email").value.trim();
+
+  const emailInput =
+  document.getElementById("email");
+
+  if(username === ""){
+    alert("Digite seu usuario");
+    return;
+  }
+
+  if(!emailInput.checkValidity()){
+    emailInput.reportValidity();
+    return;
+  }
+
+  localStorage.setItem("vinylUser", username);
+
+  updateLoginButton();
+
+  openLogin();
+
+}
+  function logout(){
+
+  localStorage.removeItem("vinylUser");
+
+  updateLoginButton();
+
+  openLogin();
+
+}
+  function updateLoginButton(){
+
+    const user =
+    localStorage.getItem("vinylUser");
+
+    const loginBtn =
+    document.getElementById("login-btn");
+
+    if(user){
+
+      loginBtn.innerText = user;
+
+    } else {
+
+      loginBtn.innerText = "Login";
+
+    }
+
+  }
+
+    function logout(){
+
+      localStorage.removeItem("vinylUser");
+
+      updateLoginButton();
+
+      closeLogin();
+
+    }
+
+    function updateLoginButton(){
+
+      const user =
+      localStorage.getItem("vinylUser");
+
+      const loginBtn =
+      document.getElementById("login-btn");
+
+      if(user){
+
+        loginBtn.innerText = user;
+
+      } else {
+
+        loginBtn.innerText = "Login";
+
+      }
+
+    }
+
+    updateLoginButton();
+
+    /* ENVIAR TICKET */
+
+    function sendTicket(event){
+
+      event.preventDefault();
+
+      const user =
+      localStorage.getItem("vinylUser");
+
+      if(!user){
+
+        alert(
+          "Você precisa estar logado para enviar um ticket."
+        );
+
+        openLogin();
+
+        return;
+
+      }
+
+      const popup =
+      document.getElementById("popup");
+
+      popup.classList.add("active");
+
+      document
+      .querySelector(".support-form")
+      .reset();
+
+    }
+
+    function closePopup(){
+
+      document
+      .getElementById("popup")
+      .classList.remove("active");
+
+    }
+
+  </script>
+
+</body>
+</html>
