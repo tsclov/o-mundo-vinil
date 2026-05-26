@@ -1355,7 +1355,21 @@ if(categoria){
 }
     /* CARRINHO */
 
-    let cart = [];
+    function getCartKey(){
+
+  const user =
+  localStorage.getItem("vinylUser");
+
+  return user
+    ? `vinylCart_${user}`
+    : "vinylCart_guest";
+
+}
+
+let cart =
+JSON.parse(
+  localStorage.getItem(getCartKey())
+) || [];
 
     function addToCart(name, price){
 
@@ -1406,9 +1420,11 @@ if(categoria){
 
       cartTotal.innerText =
       total;
-
+     localStorage.setItem(
+      getCartKey(),
+     JSON.stringify(cart)
+     );
     }
-
     function toggleCart(){
 
       const cartSidebar =
@@ -1417,6 +1433,16 @@ if(categoria){
       cartSidebar.classList.toggle("active");
 
     }
+    function loadUserCart(){
+
+  cart =
+  JSON.parse(
+    localStorage.getItem(getCartKey())
+  ) || [];
+
+  updateCart();
+
+}
    function clearCart(){
 
      cart = [];
@@ -1428,6 +1454,7 @@ if(categoria){
 
   const user =
   localStorage.getItem("vinylUser");
+  loadUserCart();
 
   if(!user){
 
@@ -1597,7 +1624,9 @@ function openLogin(){
   updateLoginButton();
 
   openLogin();
+   cart = [];
 
+  updateCart();
 }
   function updateLoginButton(){
 
@@ -1620,6 +1649,7 @@ function openLogin(){
   }
 
   updateLoginButton();
+  updateCart();
   </script>
 
 </body>
